@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electromagnetism — Physics Fundamentals</title>
+  <meta name="description" content="Electricity, magnetism, Maxwell's equations, waves, and optics.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html" class="active">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 3</div>
+      <h1>Electromagnetism</h1>
+      <p class="byline">Electric charges, magnetic fields, and light itself — Maxwell's equations unify electricity and magnetism into a single, elegant theory that underlies all of modern technology.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#charge">Electric charge & Coulomb's law</a></li>
+        <li><a href="#field">Electric fields & potential</a></li>
+        <li><a href="#circuits">Circuits & currents</a></li>
+        <li><a href="#magnetism">Magnetism & the Biot-Savart law</a></li>
+        <li><a href="#maxwell">Maxwell's equations</a></li>
+        <li><a href="#optics">Light, waves & optics</a></li>
+      </ol>
+    </div>
+
+    <!-- Charge -->
+    <h2 id="charge" class="section-title"><span class="num">1.</span> Electric Charge &amp; Coulomb's Law</h2>
+    <p><span class="glossary-term" data-term="Fundamental property of matter; positive and negative.">Electric charge</span> is the fundamental property that makes objects attract or repel. There are two kinds — positive and negative — and unlike charges attract while like charges repel. Charge is quantized in units of the <span class="glossary-term" data-term="Elementary charge e ≈ 1.602 × 10⁻¹⁹ C.">elementary charge</span> $e = 1.602\times10^{-19}$ C.</p>
+
+    <div class="equation">
+      $$\boxed{F = k_e\frac{|q_1 q_2|}{r^2} = \frac{1}{4\pi\varepsilon_0}\frac{q_1 q_2}{r^2}}$$
+    </div>
+
+    <p>This is <span class="glossary-term" data-term="Force between two point charges, ∝ q1q2/r².">Coulomb's law</span>: the electric force is proportional to the product of the charges and inversely proportional to the square of their separation. By contrast with gravity (always attractive), electric forces can attract <em>or</em> repel — and they're roughly 10³⁶ times stronger!</p>
+
+    <div class="definition">
+      <strong>Conservation of charge</strong> — The total charge in an isolated system is constant. You can transfer charge, but you can't create or destroy net charge (charge <em>density</em> can cancel to zero, but the total is conserved).
+    </div>
+
+    <!-- Field -->
+    <h2 id="field" class="section-title"><span class="num">2.</span> Electric Fields &amp; Potential</h2>
+    <p>To avoid "action at a distance," we say a charge $q$ creates an <span class="glossary-term" data-term="Force per unit charge; E = F/q.">electric field</span> $\vec{E}$ that exerts a force $\vec{F} = q\vec{E}$ on any other charge. Field lines point away from positive charges and toward negative ones.</p>
+
+    <div class="equation">
+      $$\vec{E}(\vec{r}) = \frac{1}{4\pi\varepsilon_0}\sum_i \frac{q_i(\vec{r}-\vec{r}_i)}{|\vec{r}-\vec{r}_i|^3},\qquad \vec{F} = q\vec{E}$$
+    </div>
+
+    <p>Because the electric force is <span class="glossary-term" data-term="Force is path-independent; work done over a closed loop is zero.">conservative</span>, we can define a scalar <span class="glossary-term" data-term="Potential energy per unit charge, V = U/q.">electric potential</span> $V$ such that $\vec{E} = -\nabla V$:</p>
+
+    <div class="equation">
+      $$V = \frac{U}{q},\qquad \Delta V = -\int \vec{E}\cdot d\vec{l}$$
+    </div>
+
+    <p>Voltage is potential difference. A battery maintains a steady $\Delta V$, pushing charges through a circuit.</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="field" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption"><strong>Electric field lines</strong> from two charges. Drag the sliders to flip charge signs and change separation. Field arrows (lines) show the direction a positive test charge would move; denser lines mean stronger field.</div>
+    </div>
+
+    <!-- Circuits -->
+    <h2 id="circuits" class="section-title"><span class="num">3.</span> Current, Resistance &amp; Circuits</h2>
+    <p><span class="glossary-term" data-term="Rate of charge flow, I = dQ/dt, measured in amperes.">Current</span> $I$ is the rate of charge flow. <span class="glossary-term" data-term="V = IR; linear relation for ohmic materials.">Ohm's law</span> $V = IR$ relates voltage, current, and resistance for ohmic materials, where resistance depends on geometry and material:</p>
+
+    <div class="equation">
+      $$R = \rho\frac{L}{A},\qquad V = IR,\qquad P = IV$$
+    </div>
+
+    <div class="tip">
+      <strong>Think of electricity like water.</strong> Voltage is like water pressure (height of a reservoir), current is like flow rate (liters per second), and resistance is like a narrow pipe. A battery is a pump that maintains pressure even as water flows.
+    </div>
+
+    <div class="equation">
+      $$\text{Series: } R_{\text{eq}} = \sum R_i \quad\quad \text{Parallel: } \frac{1}{R_{\text{eq}}} = \sum \frac{1}{R_i}$$
+    </div>
+
+    <div class="example">
+      <strong>Example.</strong> Two 100 Ω resistors in parallel across a 12 V battery.
+      <br>Equivalent resistance: $1/R_{\text{eq}} = 1/100 + 1/100 = 2/100$, so $R_{\text{eq}} = 50$ Ω.
+      <br>Current: $I = V/R = 12/50 = 0.24$ A. Power dissipated: $P = IV = 2.88$ W.
+    </div>
+
+    <!-- Magnetism -->
+    <h2 id="magnetism" class="section-title"><span class="num">4.</span> Magnetism &amp; the Biot-Savart Law</h2>
+    <p>Whereas stationary electric charges create electric fields, <span class="glossary-term" data-term="Moving charges; an electric current.">moving charges</span> (currents) create <span class="glossary-term" data-term="Magnetic field; acts on moving charges.">magnetic fields</span>. The Biot-Savart law gives the field from a small current element:</p>
+
+    <div class="equation">
+      $$\vec{B} = \frac{\mu_0}{4\pi}\int \frac{I\,d\vec{\ell}\times\hat{r}}{r^2}$$
+    </div>
+
+    <p>A charge $q$ moving at velocity $\vec{v}$ in a magnetic field feels the <span class="glossary-term" data-term="Lorentz force: F = q(E + v×B).">Lorentz force</span> $\vec{F} = q\vec{v}\times\vec{B}$, which is always perpendicular to velocity — so it <em>bends</em> trajectories without changing speed. This is why the aurora curves along Earth's magnetic field lines.</p>
+
+    <div class="definition">
+      <strong>Faraday's law of induction</strong> — A changing magnetic flux $\Phi_B$ induces an electromotive force: $\mathcal{E} = -d\Phi_B/dt$. This is the principle behind generators, transformers, and induction cooktops.
+    </div>
+
+    <div class="equation">
+      $$\mathcal{E} = -\frac{d\Phi_B}{dt},\qquad \Phi_B = \int \vec{B}\cdot d\vec{A}$$
+    </div>
+
+    <!-- Maxwell -->
+    <h2 id="maxwell" class="section-title"><span class="num">5.</span> Maxwell's Equations</h2>
+    <p>James Clerk Maxwell (1865) gathered the laws of electricity and magnetism into four equations. In differential form, in vacuum:</p>
+
+    <div class="equation">
+      $$\begin{aligned}
+      \nabla\cdot\vec{E} &= \frac{\rho}{\varepsilon_0} & &\text{(Gauss's law — electric charges make E-fields)}\\\\
+      \nabla\cdot\vec{B} &= 0 & &\text{(No magnetic monopoles)}\\\\
+      \nabla\times\vec{E} &= -\frac{\partial\vec{B}}{\partial t} & &\text{(Faraday — changing B makes E)}\\\\
+      \nabla\times\vec{B} &= \mu_0\vec{J} + \mu_0\varepsilon_0\frac{\partial\vec{E}}{\partial t} & &\text{(Ampère–Maxwell)}
+      \end{aligned}$$
+    </div>
+
+    <div class="note">
+      <strong>The displacement current is Maxwell's genius stroke.</strong> Ampère's original law had a gap: it worked for steady currents but broke down for time-varying fields (like the charging capacitor, where current flows <em>into</em> a plate but not <em>through</em> the gap). Maxwell added the $\mu_0\varepsilon_0\,\partial\vec{E}/\partial t$ term — a current made of <em>changing electric fields</em>. With this fix, the equations predict self-sustaining waves that travel exactly at $c = 1/\sqrt{\mu_0\varepsilon_0} = 3\times10^8$ m/s. <strong>Light is an electromagnetic wave.</strong>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Symbol</th><th>Meaning</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>$\varepsilon_0$</td><td>Vacuum permittivity</td><td>$8.854\times10^{-12}$ F/m</td></tr>
+        <tr><td>$\mu_0$</td><td>Vacuum permeability</td><td>$4\pi\times10^{-7}$ H/m</td></tr>
+        <tr><td>$c$</td><td>Speed of light</td><td>$2.998\times10^8$ m/s</td></tr>
+        <tr><td>$k_e$</td><td>Coulomb constant</td><td>$8.988\times10^9$ N·m²/C²</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Optics -->
+    <h2 id="optics" class="section-title"><span class="num">6.</span> Light, Waves &amp; Optics</h2>
+    <p>Light is a transverse electromagnetic wave with wavelength $\lambda$ and frequency $f$ related by $c = \lambda f$. The <span class="glossary-term" data-term="EM spectrum: radio, microwave, infrared, visible, UV, X-ray, gamma.">electromagnetic spectrum</span> spans radio waves (kilometers long) to gamma rays (picometers), with visible light a narrow 400–700 nm band in between.</p>
+
+    <div class="equation">
+      $$\vec{E}(x,t) = E_0\sin(kx - \omega t),\qquad c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} = \lambda f$$
+    </div>
+
+    <p><span class="glossary-term" data-term="Light bends when entering a medium where speed differs.">Refraction</span> follows Snell's law, $n_1\sin\theta_1 = n_2\sin\theta_2$, where $n = c/v$ is the index of refraction. <span class="glossary-term" data-term="Light rays reflect at equal angles; angle of incidence = angle of reflection.">Reflection</span>, <span class="glossary-term" data-term="Light bending around obstacles/edges.">diffraction</span>, and <span class="glossary-term" data-term="Superposition of waves; reinforces or cancels.">interference</span> reveal light's wave nature — confirmed decisively by Young's double-slit experiment in 1801.</p>
+
+    <div class="figure center fade-in">
+      <svg width="480" height="140" viewBox="0 0 480 140" aria-label="Snell's law illustration">
+        <line x1="20" y1="100" x2="460" y2="100" stroke="#333" stroke-width="2"/>
+        <text x="230" y="116" font-size="12" fill="#555" text-anchor="middle" font-family="Inter">interface (air/glass)</text>
+        <line x1="230" y1="30" x2="230" y2="100" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3"/>
+        <text x="234" y="68" font-size="12" fill="#2563eb" font-family="Inter">incident ray</text>
+        <line x1="230" y1="30" x2="330" y2="72" stroke="#2563eb" stroke-width="2"/>
+        <text x="280" y="52" font-size="12" fill="#2563eb" font-family="Inter">refracted ray</text>
+        <path d="M218 34 L226 42 M226 34 L218 42" stroke="#2563eb" stroke-width="2"/>
+        <text x="200" y="18" font-size="11" fill="#333" font-family="Inter">n₁sinθ₁ = n₂sinθ₂</text>
+      </svg>
+      <div class="caption">Snell's law: light bends toward the normal when entering a higher-index medium (glass). The angle of incidence equals the angle of reflection.</div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Electric charges create fields; like charges repel, opposite charges attract. The force falls as $1/r^2$ (Coulomb).</li>
+        <li>$\vec{F} = q\vec{E}$ and $V = U/q$ turn the force law into the elegant language of fields and potentials.</li>
+        <li>Maxwell's four equations unify electricity and magnetism — and predict that light is an electromagnetic wave traveling at $c = 1/\sqrt{\mu_0\varepsilon_0}$.</li>
+        <li>Time-varying fields produce waves: this is how radio, Wi-Fi, and eyes themselves all work.</li>
+        <li>Reflection, refraction, interference, and diffraction are all wave phenomena with everyday applications from lenses to fiber optics.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="waves.html" class="topic-card" style="display:inline-block; max-width:320px;">〰️ Next: Waves & Oscillations →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — electromagnetism module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

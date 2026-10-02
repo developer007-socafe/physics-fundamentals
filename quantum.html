@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantum Mechanics — Physics Fundamentals</title>
+  <meta name="description" content="Wavefunctions, uncertainty principle, Schrödinger equation, quantum tunneling, and the measurement problem.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html" class="active">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 5</div>
+      <h1>Quantum Mechanics</h1>
+      <p class="byline">The rules of the subatomic world, where particles are waves, uncertainty is fundamental, and observation changes reality. Quantum mechanics underlies chemistry, transistors, lasers, and most modern technology — even as it defies everyday intuition.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#blackbody">The ultraviolet catastrophe & Planck</a></li>
+        <li><a href="#wave-particle">Wave–particle duality</a></li>
+        <li><a href="#schrodinger">The Schrödinger equation</a></li>
+        <li><a href="#uncertainty">The uncertainty principle</a></li>
+        <li><a href="#tunneling">Quantum tunneling</a></li>
+        <li><a href="#measurement">The measurement problem & interpretations</a></li>
+      </ol>
+    </div>
+
+    <!-- Planck -->
+    <h2 id="blackbody" class="section-title"><span class="num">1.</span> The Crisis That Started It All</h2>
+    <p>By 1900, classical physics — Maxwell's equations and thermodynamics — was triumphant. But it faced a fatal flaw: <span class="glossary-term" data-term="Perfect absorber/emitter of radiation; spectrum depends only on temperature.">blackbody radiation</span>. When physicists tried to calculate the energy radiated by a hot object, classical theory predicted infinite energy at short wavelengths — the <span class="glossary-term" data-term="The failure of classical physics to predict blackbody spectrum; infinite UV energy.">ultraviolet catastrophe</span>. In 1900, Max Planck solved it by proposing a desperate fix: energy is emitted in discrete chunks.</p>
+
+    <div class="equation">
+      $$\boxed{E = nh\nu = n\hbar\omega}$$
+    </div>
+
+    <p>Energy of frequency $\nu$ comes in multiples of $h\nu$ — a quantum (plural: quanta). Planck called this a mathematical trick, unaware it was the birth of a revolution. A year later, Einstein applied the same idea to light itself, explaining the <span class="glossary-term" data-term="Electron ejected from metal when light shines on it; proof of light's particle nature.">photoelectric effect</span>:</p>
+
+    <div class="equation">
+      $$hf = W_0 + K_{\text{max}}$$
+    </div>
+
+    <p>Light of frequency $f$ ejects electrons from metal, but only if $hf$ exceeds the work function $W_0$ — no matter how intense the light. Brighter light gives <em>more</em> electrons, but each with the <em>same</em> maximum energy. Light is made of particles — <span class="glossary-term" data-term="Particles of light; energy E = hf, momentum p = h/λ.">photons</span>.</p>
+
+    <div class="definition">
+      <strong>Constants of quantum mechanics.</strong> Planck's constant $h = 6.626\times10^{-34}$ J·s is the quantum of action. The reduced constant $\hbar = h/2\pi = 1.055\times10^{-34}$ J·s appears in almost every quantum formula.
+    </div>
+
+    <!-- Wave-particle -->
+    <h2 id="wave-particle" class="section-title"><span class="num">2.</span> Wave–Particle Duality</h2>
+    <p>If light is a particle, then surely electrons are particles too — right? The <span class="glossary-term" data-term="Experiment showing electrons diffract like waves (Davisson-Germer, 1927).">Davisson–Germer experiment</span> (1927) fired electrons at a nickel crystal and found they diffracted, producing interference patterns — unmistakable wave behavior. <span class="glossary-term" data-term="De Broglie wavelength: λ = h/p, relating particle momentum to wave wavelength.">de Broglie</span> proposed that <em>everything</em> has a wavelength:</p>
+
+    <div class="equation">
+      $$\boxed{\lambda_{\text{dB}} = \frac{h}{p}}$$
+    </div>
+
+    <div class="tip">
+      <strong>A profound symmetry of nature.</strong> Photons (light) are particle-like; electrons are wave-like. But both can behave as either. The question isn't "is it a wave or a particle?" — it's neither. Quantum entities are something deeper, revealed to us only through the approximations our classical minds and instruments impose.
+    </div>
+
+    <p>For a baseball, $\lambda_{\text{dB}}$ is absurdly small ($10^{-34}$ m) — that's why we never see baseballs diffracting. But for an electron with 1 eV of energy, $\lambda \approx 1.2$ nm — comparable to atomic spacings, making electron microscopes possible.</p>
+
+    <!-- Schrödinger -->
+    <h2 id="schrodinger" class="section-title"><span class="num">3.</span> The Schrödinger Equation</h2>
+    <p>In 1926, Erwin Schrödinger wrote the equation that governs how quantum states evolve. It is the quantum version of Newton's $F=ma$ — a differential equation for the <span class="glossary-term" data-term="Complex probability amplitude; |ψ|² gives probability density.">wavefunction</span> $\Psi(x,t)$:</p>
+
+    <div class="equation">
+      $$\boxed{i\hbar\frac{\partial\Psi}{\partial t} = \hat{H}\Psi = \left(-\frac{\hbar^2}{2m}\nabla^2 + V\right)\Psi}$$
+    </div>
+
+    <p>The wave function $\Psi$ is a <span class="glossary-term" data-term="A function whose squared magnitude gives probability density.">probability amplitude</span>. The <span class="glossary-term" data-term="Born rule: probability of finding particle in dx is |ψ|² dx.">Born rule</span> says $|\Psi|^2$ gives the probability density of finding the particle at a given location. The square modulus $|\Psi|^2$ is always real and positive — probabilities add up to 1.</p>
+
+    <div class="equation">
+      $$\int |\Psi(x)|^2\,dx = 1$$
+    </div>
+
+    <div class="example">
+      <strong>The particle in a box.</strong> Confine a particle to a region $[0,L]$ with infinite walls ($V=\infty$ outside). Inside, $V=0$ and the solutions are standing waves:
+      <br>$\Psi_n(x) = \sqrt{2/L}\sin(n\pi x/L)$ with energies $E_n = n^2 h^2/(8mL^2)$, $n=1,2,3,\ldots$
+      <br>The energy is <em>quantized</em> — only specific values are allowed. This explains why atoms have discrete energy levels and emit light only at specific frequencies.
+    </div>
+
+    <!-- Uncertainty -->
+    <h2 id="uncertainty" class="section-title"><span class="num">4.</span> The Uncertainty Principle</h2>
+    <p>Werner Heisenberg showed that quantum mechanics has a fundamental limit on what we can know simultaneously. The more precisely we know a particle's position, the less precisely we can know its momentum, and vice versa:</p>
+
+    <div class="equation">
+      $$\boxed{\Delta x\,\Delta p \ge \frac{\hbar}{2}}$$
+    </div>
+
+    <div class="definition">
+      <strong>Uncertainty is not measurement error.</strong> This is not a limitation of our instruments. It's a statement about the quantum state itself — position and momentum are fundamentally linked quantities. A particle doesn't <em>have</em> a definite position and momentum simultaneously; the wavefunction encodes probabilities for each.
+    </div>
+
+    <p>Another uncertainty relation links energy and time: $\Delta E\,\Delta t \ge \hbar/2$. This lets particles "borrow" energy from the vacuum for fleeting moments — the basis of <span class="glossary-term" data-term="Transient energy fluctuations in empty space.">virtual particles</span> and the Casimir effect.</p>
+
+    <!-- Tunneling -->
+    <h2 id="tunneling" class="section-title"><span class="num">5.</span> Quantum Tunneling</h2>
+    <p>Classically, if you roll a ball at a hill and it doesn't have enough energy to crest the top, it rolls back. In quantum mechanics, the wavefunction doesn't drop to zero instantly — it <span class="glossary-term" data-term="Exponentially decaying into classically forbidden regions.">evanesces</span> into the barrier, giving a small probability the particle appears on the other side. This is <span class="glossary-term" data-term="Quantum mechanical transmission through a classically forbidden barrier.">tunneling</span> — a purely quantum phenomenon with no classical analog.</p>
+
+    <div class="equation">
+      $$T \approx e^{-2\kappa a},\qquad \kappa = \sqrt{\frac{2m(V - E)}{\hbar^2}}$$
+    </div>
+
+    <p>The transmission probability decreases exponentially with barrier width $a$ and height $(V-E)$. Tunneling is essential to <span class="glossary-term" data-term="Nuclear fusion in stars; hydrogen nuclei tunnel through their mutual repulsion.">stellar fusion</span> (the Sun's energy!), scanning tunneling microscopes, and radioactive decay.</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="tunnel" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption"><strong>Quantum tunneling.</strong> A wave packet (blue) approaches a barrier (orange). Classically the particle would bounce back, but quantum mechanics gives it a small chance to appear on the other side. Adjust the particle energy $E$ and barrier height $V$ to see how the transmission probability $T$ changes.</div>
+    </div>
+
+    <!-- Measurement -->
+    <h2 id="measurement" class="section-title"><span class="num">6.</span> The Measurement Problem</h2>
+    <p>If a quantum system can be in multiple states at once — the famous <span class="glossary-term" data-term="Superposition: a system in multiple states simultaneously until measured.">superposition</span> — what happens when we measure it? Schrödinger's cat is simultaneously alive <em>and</em> dead (a poison vial triggered by a quantum random event), until the box is opened and the cat is found in one definite state. The <span class="glossary-term" data-term="The apparent transition from superposition to definite outcome upon measurement.">collapse of the wavefunction</span> is mysterious and has spawned decades of debate.</p>
+
+    <div class="figure center fade-in">
+      <svg width="420" height="200" viewBox="0 0 420 200" aria-label="Schrödinger's cat thought experiment">
+        <rect x="60" y="40" width="300" height="120" rx="12" fill="none" stroke="#333" stroke-width="2"/>
+        <rect x="70" y="50" width="280" height="100" rx="8" fill="#faf8f5"/>
+        <circle cx="130" cy="100" r="28" fill="#000"/>
+        <text x="130" y="105" font-size="11" fill="#fff" text-anchor="middle" font-family="Inter">cat</text>
+        <rect x="220" y="85" width="70" height="30" rx="5" fill="none" stroke="#333" stroke-width="1.5"/>
+        <line x="275" y="70" x2="275" y2="85" stroke="#333" stroke-width="1"/>
+        <rect x="250" y="55" width="30" height="15" fill="#333"/>
+        <text x="265" y="45" font-size="10" fill="#333" font-family="Inter">vial</text>
+        <text x="210" y="150" font-size="11" fill="#777" font-family="Inter">closed box: |alive⟩ + |dead⟩</text>
+        <path d="M200 180 L220 180 A10 10 0 0 0 240 180 L260 180" fill="none" stroke="#333" stroke-width="2"/>
+        <text x="210" y="172" font-size="10" fill="#333" font-family="Inter">open lid</text>
+      </svg>
+      <div class="caption">Schrödinger's cat: the quintessential paradox showing how quantum superpositions clash with macroscopic reality.</div>
+    </div>
+
+    <p>Different interpretations offer different answers, none yet testable: the <span class="glossary-term" data-term="Collapse upon measurement; wavefunction is epistemic.">Copenhagen</span> view (wavefunction collapses when observed), <span class="glossary-term" data-term="All outcomes real in branching universes (Everett).">many-worlds</span> (all branches are real, you split into each outcome), <span class="glossary-term" data-term="Probabilities are epistemic but no collapse.">QBism</span>, and others. What's certain is that quantum mechanics is the most precisely tested theory in science — every prediction checked so far matches experiment to extraordinary precision.</p>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Planck's quantum hypothesis ($E = nh\nu$) ended the ultraviolet catastrophe and introduced energy quantization.</li>
+        <li>Everything has a wavelength $\lambda = h/p$; particles and waves are two aspects of the same reality — wave–particle duality.</li>
+        <li>The Schrödinger equation $i\hbar\,\partial_t\Psi = \hat{H}\Psi$ governs quantum states; $|\Psi|^2$ gives probabilities (Born rule).</li>
+        <li>Heisenberg's uncertainty principle ($\Delta x\,\Delta p \ge \hbar/2$) is a fundamental feature, not a limitation.</li>
+        <li>Quantum tunneling lets particles cross classically forbidden barriers — essential to fusion stars and modern electronics.</li>
+        <li>Measurement collapses superpositions, spawning decades of interpretation without consensus.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="relativity.html" class="topic-card" style="display:inline-block; max-width:320px;">🌌 Next: Relativity →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — quantum mechanics module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

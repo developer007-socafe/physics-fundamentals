@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thermodynamics — Physics Fundamentals</title>
+  <meta name="description" content="Heat, work, entropy, and the laws of thermodynamics. Kinetic theory, ideal gas, heat engines, and the arrow of time.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html" class="active">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 2</div>
+      <h1>Thermodynamics</h1>
+      <p class="byline">The study of heat, work, and the inexorable flow of energy from concentrated to dispersed forms. Thermodynamics governs engines, stars, living cells, and the fate of the universe itself.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#temperature">Temperature & thermal equilibrium</a></li>
+        <li><a href="#ideal-gas">The ideal gas law</a></li>
+        <li><a href="#kinetic-theory">Kinetic theory of gases</a></li>
+        <li><a href="#laws">The four laws of thermodynamics</a></li>
+        <li><a href="#entropy">Entropy & the arrow of time</a></li>
+        <li><a href="#engines">Heat engines & efficiency</a></li>
+      </ol>
+    </div>
+
+    <!-- Temperature -->
+    <h2 id="temperature" class="section-title"><span class="num">1.</span> Temperature & Thermal Equilibrium</h2>
+    <p><span class="glossary-term" data-term="A measure of average kinetic energy of particles.">Temperature</span> is a measure of how hot or cold something is, but more precisely it measures the average kinetic energy of the particles in a substance. When two objects touch, <span class="glossary-term" data-term="Heat flows spontaneously from hotter to colder objects.">heat</span> — energy transfer due to temperature difference — flows from the hotter to the colder until they reach the same temperature, <span class="glossary-term" data-term="No net heat flow between objects in thermal contact.">thermal equilibrium</span>.</p>
+
+    <div class="equation">
+      $$T_{\text{Celsius}} = T_{\text{Kelvin}} - 273.15$$
+    </div>
+
+    <div class="definition">
+      <strong>Thermal equilibrium</strong> — Two systems are in thermal equilibrium when, when placed in thermal contact, they no longer exchange heat. The <em>zeroth law</em> (transitivity of equilibrium) is what makes temperature a meaningful, measurable quantity.
+    </div>
+
+    <!-- Ideal gas law -->
+    <h2 id="ideal-gas" class="section-title"><span class="num">2.</span> The Ideal Gas Law</h2>
+    <p>Gases are collections of many particles bouncing around. In the ideal limit (no volume, no interactions), pressure, volume, and temperature are linked:</p>
+
+    <div class="equation">
+      $$\boxed{PV = nRT = Nk_B T}$$
+    </div>
+
+    <p>where $n$ is moles, $R = 8.314\,\text{J/(mol·K)}$ is the gas constant, $N$ is the number of molecules, and <span class="glossary-term" data-term="Boltzmann's constant, k_B = 1.38 × 10⁻²³ J/K.">k_B</span> is Boltzmann's constant. The <span class="glossary-term" data-term="Proportional relationships at constant other variables.">combined gas law</span> $PV/T = \text{const}$ is useful for comparing states.</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="gas" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption">An <strong>ideal gas in a box</strong>. Increase temperature to speed up particles (more collisions = higher pressure); increase particle count to see density effects. Walls are elastic barriers.</div>
+    </div>
+
+    <!-- Kinetic theory -->
+    <h2 id="kinetic-theory" class="section-title"><span class="num">3.</span> Kinetic Theory of Gases</h2>
+    <p>The ideal gas law becomes intuitive through kinetic theory. Pressure comes from particles <span class="glossary-term" data-term="Momentum transfer per unit time per unit area.">slamming into the walls</span>. Every translational degree of freedom carries average energy $\tfrac{1}{2}k_BT$:</p>
+
+    <div class="equation">
+      $$\tfrac{1}{2}m\langle v^2\rangle = \tfrac{3}{2}k_B T,\qquad \langle v\rangle = \sqrt{\frac{8k_BT}{\pi m}},\qquad v_{\text{rms}} = \sqrt{\frac{3k_BT}{m}}$$
+    </div>
+
+    <p>The <span class="glossary-term" data-term="Root-mean-square speed = √(3kT/m).">root-mean-square speed</span> tells us how fast molecules move on average. At room temperature, an oxygen molecule ($m \approx 5\times10^{-26}$ kg) has $v_{\text{rms}} \approx 480$ m/s — faster than the speed of sound!</p>
+
+    <div class="example">
+      <strong>Example.</strong> A helium atom ($m = 6.6\times10^{-27}$ kg) at $T=300$ K. Find $v_{\text{rms}}$.
+      <br>$v_{\text{rms}} = \sqrt{3k_BT/m} = \sqrt{3(1.38\times10^{-23})(300)/(6.6\times10^{-27})} \approx 1360$ m/s.
+      <br>Helium is the second-lightest element, so its atoms zip around nearly 3× faster than oxygen's.
+    </div>
+
+    <!-- Laws -->
+    <h2 id="laws" class="section-title"><span class="num">4.</span> The Four Laws of Thermodynamics</h2>
+    <div class="definition">
+      <strong>Zeroth Law</strong> — If A is in thermal equilibrium with B, and B with C, then A is in equilibrium with C. (This is what makes thermometers work.)
+    </div>
+    <div class="definition">
+      <strong>First Law (Energy Conservation)</strong> — Energy is conserved. Heat $Q$ added to a system minus work $W$ done <em>by</em> the system equals the change in internal energy: $\Delta U = Q - W$. For an ideal gas, $U = \tfrac{3}{2}Nk_BT$ (depends only on temperature).
+    </div>
+
+    <div class="equation">
+      $$\boxed{\Delta U = Q - W}$$
+    </div>
+
+    <div class="definition">
+      <strong>Second Law</strong> — The total entropy of an isolated system never decreases; heat never flows spontaneously from cold to hot. Equivalently: no engine can convert heat completely into work without other effect.
+    </div>
+
+    <div class="tip">
+      <strong>Why the Second Law is special.</strong> The first law is <em>time-symmetric</em> — you can reverse a movie of a billiard ball bouncing and the physics still looks fine. But reverse a movie of an egg splattering and the yolk spreading, and everyone sees the difference. The Second Law introduces an <strong>irreversibility</strong> — the famous "arrow of time" — that the underlying microscopic laws (which are themselves time-reversible) somehow produce in bulk.
+    </div>
+
+    <div class="definition">
+      <strong>Third Law</strong> — As $T \to 0$ K, the entropy of a perfect crystal approaches zero. (You can get close to absolute zero, but never reach it.)
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Law</th><th>Statement</th><th>Key implication</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Zeroth</td><td>Transitivity of equilibrium</td><td>Temperature is well-defined</td></tr>
+        <tr><td>First</td><td>$\Delta U = Q - W$</td><td>No free energy; perpetual motion impossible</td></tr>
+        <tr><td>Second</td><td>$\Delta S \ge 0$ (isolated)</td><td>Processes are irreversible</td></tr>
+        <tr><td>Third</td><td>$S \to 0$ as $T \to 0$</td><td>Absolute zero unreachable</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Entropy -->
+    <h2 id="entropy" class="section-title"><span class="num">5.</span> Entropy & the Arrow of Time</h2>
+    <p><span class="glossary-term" data-term="A measure of microscopic disorder or information uncertainty.">Entropy</span> $S$ counts the number of microscopic states (the <span class="glossary-term" data-term="Number of microstates compatible with a macrostate.">multiplicity</span> $\Omega$) that correspond to a macrostate:</p>
+
+    <div class="equation">
+      $$S = k_B \ln \Omega$$
+    </div>
+
+    <p>This is Boltzmann's tombstone equation. It connects the macroscopic, everyday notion of "disorder" to the microscopic reality of atoms jiggling. Consider a box of gas initially confined to one side; when the partition opens, the gas spreads to fill the whole box. The number of accessible positions (and hence $\Omega$) jumps enormously — entropy increases, even though every molecule obeys reversible Newton's laws.</p>
+
+    <div class="figure center fade-in">
+      <svg width="480" height="160" viewBox="0 0 480 160" aria-label="Entropy increases as gas spreads">
+        <rect x="40" y="50" width="120" height="60" fill="#2563eb" opacity="0.5" stroke="#1e40af" stroke-width="1"/>
+        <rect x="40" y="45" width="120" height="70" fill="#2563eb" opacity="0.15" stroke="#1e40af" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="100" y="125" font-size="12" fill="#555" text-anchor="middle" font-family="Inter">Before: low entropy</text>
+        <text x="100" y="137" font-size="11" fill="#777" text-anchor="middle" font-family="Inter">particles crowded</text>
+        <line x1="170" y1="80" x2="230" y2="80" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="210" y="72" font-size="12" fill="#555" text-anchor="middle" font-family="Inter">opens</text>
+        <rect x="250" y="35" width="270" height="90" fill="#2563eb" opacity="0.25" stroke="#1e40af" stroke-width="1"/>
+        <rect x="250" y="30" width="270" height="95" fill="#2563eb" opacity="0.10" stroke="#1e40af" stroke-width="1" stroke-dasharray="4 3"/>
+        <text x="385" y="125" font-size="12" fill="#555" text-anchor="middle" font-family="Inter">After: high entropy</text>
+        <text x="385" y="137" font-size="11" fill="#777" text-anchor="middle" font-family="Inter">particles spread out</text>
+      </svg>
+      <div class="caption">Entropy increases when a gas spreads from a confined region to fill its container — the same thing that makes a hot cup of coffee cool down.</div>
+    </div>
+
+    <!-- Engines -->
+    <h2 id="engines" class="section-title"><span class="num">6.</span> Heat Engines & Efficiency</h2>
+    <p>A <span class="glossary-term" data-term="A device that converts heat into work by cycling a working substance.">heat engine</span> absorbs heat $Q_H$ from a hot reservoir, converts some into work $W$, and dumps waste $Q_C$ into a cold reservoir. The <span class="glossary-term" data-term="Fraction of heat input converted to work: η = W/Qh = 1 − Qc/Qh.">efficiency</span> $\eta$ is how much of that heat becomes useful work.</p>
+
+    <div class="equation">
+      $$\eta = \frac{W}{Q_H} = 1 - \frac{Q_C}{Q_H}$$
+    </div>
+
+    <div class="equation">
+      $$\eta_{\text{Carnot}} = 1 - \frac{T_C}{T_H}$$
+    </div>
+
+    <p>The Carnot efficiency is the <strong>theoretical maximum</strong> for any engine operating between two temperatures (in Kelvin). Real engines fall far below it — a car's internal combustion engine is typically ~25% efficient, limited by material temperatures and friction.</p>
+
+    <div class="note">
+      <strong>Refrigerators reverse the flow.</strong> A refrigerator does work to move heat <em>from cold to hot</em>, which is the opposite of natural flow. That's why your fridge's back coils feel warm — it's dumping the extracted heat (plus the work done by the compressor) into your kitchen. The <strong>coefficient of performance</strong> $\text{COP} = Q_C / W$ measures how much cooling you get per unit of electrical work.
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Heat and work are both energy in transit — heat is microscopic energy transfer, work is organized energy transfer.</li>
+        <li>The ideal gas law $PV = nRT$ is the workhorse of classical thermodynamics; kinetic theory explains it microscopically.</li>
+        <li>Energy is conserved (First Law), but entropy of isolated systems only grows (Second Law) — this is the source of the thermodynamic arrow of time.</li>
+        <li>No engine beats a Carnot engine; efficiency is fundamentally capped by the temperatures of the reservoirs.</li>
+        <li>Absolute zero is a limit, not a reachable destination (Third Law).</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="electromagnetism.html" class="topic-card" style="display:inline-block; max-width:320px;">⚡ Next: Electromagnetism →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — thermodynamics module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

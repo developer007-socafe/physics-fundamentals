@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mechanics — Physics Fundamentals</title>
+  <meta name="description" content="Classical mechanics: Newton's laws, kinematics, energy, momentum, rotation, and oscillations.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html" class="active">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 1</div>
+      <h1>Classical Mechanics</h1>
+      <p class="byline">The study of motion and the forces that change it. From falling apples to orbiting planets, mechanics is the oldest and most intuitive branch of physics — yet it underpins every other topic in this guide.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#kinematics">Kinematics — describing motion</a></li>
+        <li><a href="#newton">Newton's laws of motion</a></li>
+        <li><a href="#energy">Energy & work</a></li>
+        <li><a href="#momentum">Momentum & impulse</a></li>
+        <li><a href="#rotation">Rotational motion</a></li>
+        <li><a href="#oscillations">Oscillations & waves</a></li>
+      </ol>
+    </div>
+
+    <!-- Kinematics -->
+    <h2 id="kinematics" class="section-title"><span class="num">1.</span> Kinematics — Describing Motion</h2>
+    <p>Kinematics is the language of motion. We describe where something <em>is</em> using position $\vec{r}(t)$, how fast it's moving with <span class="glossary-term" data-term="Rate of change of position; velocity is a vector.">velocity</span> $\vec{v} = d\vec{r}/dt$, and how the velocity itself changes with <span class="glossary-term" data-term="Rate of change of velocity; acceleration is a vector.">acceleration</span> $\vec{a} = d\vec{v}/dt$.</p>
+
+    <div class="equation">
+      $$\vec{v}(t) = \vec{v}_0 + \int_0^t \vec{a}\,dt',\qquad \vec{r}(t) = \vec{r}_0 + \int_0^t \vec{v}(t')\,dt' $$
+    </div>
+
+    <div class="tip">
+      <strong>Constant acceleration</strong> — the most common case, like free fall. With $a$ constant, the four kinematic equations follow by integration. They only apply when acceleration never changes direction or magnitude.
+    </div>
+
+    <p>For motion in a straight line with constant acceleration $a$, starting from position $x_0$ with initial velocity $v_0$:</p>
+    <div class="equation">
+      $$x(t) = x_0 + v_0 t + \tfrac{1}{2} a t^2$$
+    </div>
+    <div class="equation">
+      $$v(t) = v_0 + a t$$
+    </div>
+    <p>The last <span class="glossary-term" data-term="A relation between variables independent of time.">Suvat</span> equation connects the others without $t$:</p>
+    <div class="equation">
+      $$v^2 = v_0^2 + 2 a (x - x_0)$$
+    </div>
+
+    <div class="example">
+      <strong>Example.</strong> A ball is dropped from a height of 45 m. How long until it hits the ground? Take $g = 9.8\,\mathrm{m/s^2}$ and $v_0 = 0$.<br>
+      Using $x = x_0 + v_0 t + \frac{1}{2}at^2$ with $x = 0$: $\;0 = 45 - \frac{1}{2}(9.8)t^2$, giving $t = \sqrt{2 \times 45 / 9.8} \approx 3.03$ s.
+    </div>
+
+    <h3 class="fade-in" style="margin-top:2.5rem;">Projectile motion</h3>
+    <p>When we <em>launch</em> an object, the only acceleration is gravity downward, so horizontal velocity stays constant while vertical velocity changes uniformly:</p>
+    <div class="equation">
+      $$x(t) = v_0\cos\theta\; t,\qquad y(t) = v_0\sin\theta\; t - \tfrac{1}{2}g t^2$$
+    </div>
+    <div class="sim fade-in">
+      <canvas data-sim="projectile" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption">Drag the sliders below the simulation to launch a projectile at different speeds and angles. Can you find the angle that maximizes range?</div>
+    </div>
+    <p style="text-align:center;"><em>Maximum range occurs at $\theta = 45^\circ$ (when launch and landing heights match) because $\sin 2\theta$ peaks at $90^\circ$.</em></p>
+
+    <!-- Newton -->
+    <h2 id="newton" class="section-title"><span class="num">2.</span> Newton's Laws of Motion</h2>
+    <p>In 1687, Newton laid down three rules that still govern engineering today:</p>
+
+    <div class="definition">
+      <strong>Newton's First Law (Inertia)</strong> — A body at rest stays at rest, and a body in motion stays in uniform straight-line motion, <em>unless</em> a net external force acts on it.
+    </div>
+    <div class="definition">
+      <strong>Newton's Second Law</strong> — The rate of change of momentum equals the net force: $\vec{F}_{\text{net}} = \dfrac{d\vec{p}}{dt}$. For constant mass this becomes $\vec{F} = m\vec{a}$.
+    </div>
+    <div class="definition">
+      <strong>Newton's Third Law</strong> — For every action there is an equal and opposite reaction: $\vec{F}_{AB} = -\vec{F}_{BA}$.
+    </div>
+
+    <div class="equation">
+      $$\boxed{\vec{F}_{\text{net}} = m\,\vec{a}}$$
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Concept</th><th>Symbol</th><th>Units</th><th>Typical example</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Force</td><td>$F$</td><td>N (kg·m/s²)</td><td>Weight of 1 kg mass</td></tr>
+        <tr><td>Mass</td><td>$m$</td><td>kg</td><td>Inertia to acceleration</td></tr>
+        <tr><td>Acceleration</td><td>$a$</td><td>m/s²</td><td>Free-fall: 9.8 m/s²</td></tr>
+        <tr><td>Momentum</td><td>$p$</td><td>kg·m/s</td><td>Moving car</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>Caution:</strong> Newton's laws are valid only in <span class="glossary-term" data-term="A reference frame in which Newton's first law holds (no acceleration).">inertial reference frames</span>. In an accelerating car, a "mysterious" force flings you backward — but in an inertial frame that's just your inertia.
+    </div>
+
+    <!-- Energy -->
+    <h2 id="energy" class="section-title"><span class="num">3.</span> Energy &amp; Work</h2>
+    <p><span class="glossary-term" data-term="Energy transferred by a force acting over a displacement.">Work</span> is force times the distance over which it acts: $W = \vec{F}\cdot\vec{d} = Fd\cos\theta$. It's the bridge between force and energy.</p>
+
+    <div class="equation">
+      $$W = \int \vec{F}\cdot d\vec{r}$$
+    </div>
+
+    <p>Two forms of <span class="glossary-term" data-term="Energy of motion, ½mv².">mechanical energy</span> dominate classical mechanics:</p>
+    <ul style="margin:1em 0; padding-left:1.4rem;">
+      <li><strong>Kinetic energy</strong>: $K = \tfrac{1}{2}mv^2$ — energy of motion.</li>
+      <li><strong>Gravitational potential energy</strong>: $U = mgh$ (near Earth's surface) or $U = -GMm/r$ (general).</li>
+    </ul>
+
+    <div class="definition">
+      <strong>Conservation of Energy</strong> — In an isolated system, total energy $E = K + U$ is constant. Energy cannot be created or destroyed; it only transforms between forms.
+    </div>
+
+    <div class="equation">
+      $$K_1 + U_1 = K_2 + U_2$$
+    </div>
+
+    <p>This is powerful because it sidesteps tricky force vectors — we just track energy before and after.</p>
+
+    <!-- Momentum -->
+    <h2 id="momentum" class="section-title"><span class="num">4.</span> Momentum &amp; Impulse</h2>
+    <p><span class="glossary-term" data-term="Mass times velocity, p = mv.">Momentum</span> $p = mv$ captures "how hard it is to stop" a moving object. <span class="glossary-term" data-term="Change in momentum; impulse = force × time.">Impulse</span> $J = \Delta p = \vec{F}_{\text{avg}}\,\Delta t$ is the push that changes momentum.</p>
+
+    <div class="equation">
+      $$\vec{J} = \Delta \vec{p} = \int \vec{F}\,dt$$
+    </div>
+
+    <div class="definition">
+      <strong>Conservation of Momentum</strong> — If $\vec{F}_{\text{net, ext}} = 0$, total momentum of a system is conserved: $\sum \vec{p}_{\text{initial}} = \sum \vec{p}_{\text{final}}$.
+    </div>
+
+    <div class="equation">
+      $$m_1 \vec{v}_{1i} + m_2 \vec{v}_{2i} = m_1 \vec{v}_{1f} + m_2 \vec{v}_{2f}$$
+    </div>
+    <p>This holds even in collisions where kinetic energy is lost to heat or deformation — as long as no external force acts.</p>
+
+    <!-- Rotation -->
+    <h2 id="rotation" class="section-title"><span class="num">5.</span> Rotational Motion</h2>
+    <p>Rotational motion mirrors linear motion with angular analogs. Angle $\theta$ replaces position, angular velocity $\omega = d\theta/dt$ replaces $v$, and angular acceleration $\alpha = d\omega/dt$ replaces $a$.</p>
+
+    <div class="equation">
+      $$v = r\omega,\qquad a_t = r\alpha,\qquad a_c = r\omega^2$$
+    </div>
+
+    <p>The rotational analog of $F = ma$ uses <span class="glossary-term" data-term="Rotational inertia; resistance to angular acceleration.">moment of inertia</span> $I$ and torque $\tau$:</p>
+    <div class="equation">
+      $$\tau = I\alpha$$
+    </div>
+
+    <div class="figure center fade-in">
+      <svg width="420" height="160" viewBox="0 0 420 160" aria-label="Torque wrench diagram">
+        <rect x="40" y="78" width="260" height="6" fill="#cbd5e1" stroke="none"/>
+        <rect x="290" y="70" width="70" height="20" fill="#2563eb" opacity="0.85"/>
+        <circle cx="42" cy="80" r="16" stroke="#334155" stroke-width="2" fill="none"/>
+        <line x1="42" y1="80" x2="290" y2="80" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 4"/>
+        <text x="165" y="72" font-size="15" fill="#334155" font-family="Inter" text-anchor="middle">r (lever arm)</text>
+        <text x="200" y="100" font-size="14" fill="#555" font-family="Inter">F · r = τ</text>
+      </svg>
+      <div class="caption">Torque = force applied at a distance from the pivot. A longer wrench produces more torque for the same force.</div>
+    </div>
+
+    <p>Common moments of inertia:</p>
+    <table>
+      <thead><tr><th>Object</th><th>Axis</th><th>$I$</th></tr></thead>
+      <tbody>
+        <tr><td>Solid sphere</td><td>Through center</td><td>$\frac{2}{5}MR^2$</td></tr>
+        <tr><td>Hollow sphere</td><td>Through center</td><td>$\frac{2}{3}MR^2$</td></tr>
+        <tr><td>Solid cylinder</td><td>Through center</td><td>$\frac{1}{2}MR^2$</td></tr>
+        <tr><td>Thin rod</td><td>Through center, ⊥ rod</td><td>$\frac{1}{12}ML^2$</td></tr>
+        <tr><td>Thin rod</td><td>Through end, ⊥ rod</td><td>$\frac{1}{3}ML^2$</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Oscillations -->
+    <h2 id="oscillations" class="section-title"><span class="num">6.</span> Oscillations &amp; Simple Harmonic Motion</h2>
+    <p><span class="glossary-term" data-term="Repetitive motion; an oscillation repeats around an equilibrium.">Simple harmonic motion</span> (SHM) describes systems where a restoring force is proportional to displacement: $F = -kx$. The solution is sinusoidal:</p>
+
+    <div class="equation">
+      $$x(t) = A\cos(\omega t + \phi),\qquad \omega = \sqrt{\frac{k}{m}}$$
+    </div>
+
+    <div class="equation">
+      $$T = \frac{2\pi}{\omega} = 2\pi\sqrt{\frac{m}{k}},\qquad f = \frac{1}{T}$$
+    </div>
+
+    <p>where $T$ is the <span class="glossary-term" data-term="Time for one complete cycle.">period</span>, $f$ the frequency, $A$ the amplitude, and $\phi$ a phase offset.</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="pendulum" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption">A simple <span class="glossary-term" data-term="An idealized mass on a string; period independent of amplitude (small angles).">pendulum</span>. Adjust length, gravity, and damping to see how the period $T = 2\pi\sqrt{L/g}$ changes.</div>
+    </div>
+
+    <div class="tip">
+      <strong>Small-angle approximation.</strong> A real pendulum only obeys $T = 2\pi\sqrt{L/g}$ when the swing angle is small (sin θ ≈ θ). Large swings are slower than the formula predicts — the simulation captures this.
+    </div>
+
+    <h3 id="wavemotion">Waves</h3>
+    <p>Many oscillators couple into <span class="glossary-term" data-term="A wave transfers energy without transferring mass.">waves</span>. A traveling wave has the form $y(x,t) = A\sin(kx - \omega t + \phi)$, where $k = 2\pi/\lambda$ is the wave number and $\omega = 2\pi f$. The wave speed is $v = f\lambda = \omega/k$.</p>
+
+    <div class="equation">
+      $$y(x,t) = A\sin\!\left(\frac{2\pi}{\lambda}x - 2\pi f\, t + \phi\right)$$
+    </div>
+
+    <div class="note">In a <em>standing wave</em>, reflected waves interfere with incoming ones. Nodes (zero displacement) appear at $x = n\lambda/2$. This is why guitar strings of fixed length only play certain notes — the boundary condition selects allowed wavelengths.</div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Motion is described with position, velocity, and acceleration — the derivatives of $\vec{r}(t)$.</li>
+        <li>$\vec{F} = m\vec{a}$ is the master equation of mechanics, but only in inertial frames.</li>
+        <li>Energy and momentum are conserved in isolated systems — powerful shortcuts past force diagrams.</li>
+        <li>Rotational motion reuses linear formulas with $I$, $\tau$, and $\omega$ replacing $m$, $F$, $v$.</li>
+        <li>Simple harmonic oscillators ($F = -kx$) and waves ($v = f\lambda$) are everywhere in nature.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="thermodynamics.html" class="topic-card" style="display:inline-block; max-width:320px;">🔥 Next: Thermodynamics →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — mechanics module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waves & Oscillations — Physics Fundamentals</title>
+  <meta name="description" content="Wave properties, sound, light, interference, diffraction, standing waves, Doppler effect.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html" class="active">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 4</div>
+      <h1>Waves &amp; Oscillations</h1>
+      <p class="byline">From guitar strings to the cosmic microwave background, waves are the universal carrier of energy and information — sound, light, water, and even the fabric of spacetime itself.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#wave-equation">The wave equation</a></li>
+        <li><a href="#superposition">Superposition & interference</a></li>
+        <li><a href="#standing">Standing waves & resonance</a></li>
+        <li><a href="#sound">Sound waves</a></li>
+        <li><a href="#doppler">The Doppler effect</a></li>
+      </ol>
+    </div>
+
+    <!-- Wave equation -->
+    <h2 id="wave-equation" class="section-title"><span class="num">1.</span> The Wave Equation</h2>
+    <p>A <span class="glossary-term" data-term="A periodic variation that transfers energy without net mass transport.">wave</span> is a disturbance that transfers energy without transporting matter. A <span class="glossary-term" data-term="Periodic up-and-down motion; repeats with period T and frequency f = 1/T.">wave</span> is described by its amplitude $A$, wavelength $\lambda$, frequency $f$, and speed $v = f\lambda$:</p>
+
+    <div class="equation">
+      $$\boxed{y(x,t) = A\sin(kx - \omega t + \phi)}$$
+    </div>
+
+    <p>where $k = 2\pi/\lambda$ is the wave number and $\omega = 2\pi f$ is the angular frequency. For a string under tension $T$ with linear density $\mu$, the speed is $v = \sqrt{T/\mu}$. The general one-dimensional wave equation is:</p>
+
+    <div class="equation">
+      $$\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2 y}{\partial x^2}$$
+    </div>
+
+    <div class="definition">
+      <strong>Transverse vs longitudinal waves.</strong> In a transverse wave, the displacement is perpendicular to propagation (like a wave on a string or light). In a longitudinal wave, displacement is parallel (like sound in air — compressions and rarefactions).
+    </div>
+
+    <!-- Superposition -->
+    <h2 id="superposition" class="section-title"><span class="num">2.</span> Superposition &amp; Interference</h2>
+    <p>When two waves meet, they <span class="glossary-term" data-term="Waves add amplitudes linearly; the principle underlying interference.">superpose</span> — their amplitudes add. This leads to <span class="glossary-term" data-term="Constructive: peaks align (louder); Destructive: peak meets trough (quieter).">interference</span>: constructive (in phase, amplitudes add) where peaks align, and destructive (out of phase, amplitudes cancel) where a peak meets a trough.</p>
+
+    <div class="equation">
+      $$y_{\text{total}} = y_1 + y_2 = 2A\cos\!\left(\tfrac{\Delta\phi}{2}\right)\sin\!\left(\bar{k}x - \bar{\omega}t + \bar{\phi}\right)$$
+    </div>
+
+    <p>Thomas Young's double-slit experiment (1801) demonstrated light's wave nature: alternating bright and dark fringes appear because light from the two slits travels different distances to each point on the screen, creating varying path differences $\Delta L = d\sin\theta$.</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="wave" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption"><strong>Two-source interference</strong>. Two coherent wave sources emit circular waves. Where crests meet crests (constructive), bright bands appear; where crest meets trough (destructive), they cancel. Drag the sliders to change separation, frequency, and wave speed.</div>
+    </div>
+
+    <!-- Standing waves -->
+    <h2 id="standing" class="section-title"><span class="num">3.</span> Standing Waves &amp; Resonance</h2>
+    <p>When a wave reflects and travels back, it interferes with itself. At <span class="glossary-term" data-term="Frequencies where reflected waves constructively interfere.">resonant frequencies</span>, the reflected wave reinforces the incoming one, creating <span class="glossary-term" data-term="Oscillation pattern with fixed nodes and antinodes.">standing waves</span> with fixed nodes (zero displacement) and antinodes (maximum displacement). Only wavelengths $\lambda_n = 2L/n$ fit on a string of length $L$ fixed at both ends:</p>
+
+    <div class="equation">
+      $$f_n = \frac{n}{2L}\sqrt{\frac{T}{\mu}},\qquad n = 1, 2, 3, \dots$$
+    </div>
+
+    <p>The fundamental ($n=1$) is the lowest note; higher harmonics ($n=2, 3, \ldots$) give the instrument its <span class="glossary-term" data-term="Quality of sound determined by the harmonic content.">timbre</span>. This is why a guitar and a violin playing the same note sound different — their overtone mixtures differ.</p>
+
+    <div class="tip">
+      <strong>Bridge of physical intuition.</strong> The same math governs acoustic pipes, laser cavities, and even quantum particles in a box (see the Quantum section). Resonance is everywhere: the Tacoma Narrows Bridge collapse (1940), microwave ovens (water molecules resonate at 2.45 GHz), and the Schumann resonance (Earth's cavity rings at ~7.8 Hz).
+    </div>
+
+    <!-- Sound -->
+    <h2 id="sound" class="section-title"><span class="num">4.</span> Sound Waves</h2>
+    <p><span class="glossary-term" data-term="A longitudinal pressure wave; regions of compression and rarefaction.">Sound</span> is a longitudinal pressure wave in a medium. Its speed in air at 0°C is 331 m/s and increases ~0.6 m/s per °C: $v_{\text{sound}} \approx 331 + 0.6T_{\text{°C}}$. The <span class="glossary-term" data-term="Logarithmic measure of sound intensity relative to a reference.">decibel scale</span> measures intensity logarithmically:</p>
+
+    <div class="equation">
+      $$\beta = 10\log_{10}\!\left(\frac{I}{I_0}\right),\qquad I_0 = 10^{-12}\text{ W/m}^2$$
+    </div>
+
+    <p>Human hearing spans roughly 20 Hz to 20 kHz and 0 to 120 dB (beyond which lies pain and then physical damage). Pitch maps to frequency, loudness to amplitude, and timbre to harmonic content.</p>
+
+    <!-- Doppler -->
+    <h2 id="doppler" class="section-title"><span class="num">5.</span> The Doppler Effect</h2>
+    <p>When a wave source moves relative to an observer, the observed frequency shifts: <span class="glossary-term" data-term="Higher frequency when source approaches, lower when receding.">blueshift</span> (approaching) raises pitch/frequency, <span class="glossary-term" data-term="Lower frequency when source recedes.">redshift</span> (receding) lowers it. For sound with a stationary observer and moving source:</p>
+
+    <div class="equation">
+      $$\boxed{f' = f\frac{v_{\text{sound}}}{v_{\text{sound}} \mp v_s}}$$
+    </div>
+
+    <p>The minus sign applies as the source approaches (frequency up), the plus as it recedes. The same principle applied to light gives <span class="glossary-term" data-term="Measuring astronomical redshift to determine recession velocity.">astronomical redshift</span> $z = \Delta\lambda/\lambda$, which Edwin Hubble used to discover the expansion of the universe: more distant galaxies recede faster, $v = H_0 d$.</p>
+
+    <div class="figure center fade-in">
+      <svg width="480" height="140" viewBox="0 0 480 140" aria-label="Doppler effect illustration">
+        <circle cx="240" cy="70" r="20" fill="#2563eb"/>
+        <text x="240" y="74" font-size="11" fill="#fff" text-anchor="middle" font-family="Inter">source</text>
+        <line x1="240" y1="70" x2="40" y2="70" stroke="#93c5fd" stroke-width="2" marker-end="url(#arr)"/>
+        <line x1="240" y1="70" x2="440" y2="70" stroke="#ef4444" stroke-width="2" marker-end="url(#arr)"/>
+        <text x="140" y="62" font-size="11" fill="#ef4444" font-family="Inter">compressed (shorter λ)</text>
+        <text x="340" y="62" font-size="11" fill="#93c5fd" font-family="Inter">expanded (longer λ)</text>
+        <text x="240" y="30" font-size="12" fill="#555" text-anchor="middle" font-family="Inter">f' = f · v/(v ∓ vs)</text>
+      </svg>
+      <div class="caption">The Doppler effect: wavefronts compress ahead of a moving source (higher frequency, blueshift) and stretch behind it (lower frequency, redshift).</div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Waves transfer energy without transporting matter; they are described by $y = A\sin(kx-\omega t+\phi)$ with speed $v = f\lambda$.</li>
+        <li>Superposition makes waves add — constructive and destructive interference create patterns seen in water ripples, sound, and light.</li>
+        <li>Standing waves arise from interference of reflected waves; boundary conditions pick natural frequencies (resonance) — the basis of all musical instruments.</li>
+        <li>Sound is a longitudinal pressure wave; the decibel scale compresses its enormous intensity range into a human-relevant scale.</li>
+        <li>The Doppler effect — frequency shifts from relative motion — connects a passing ambulance's siren to the expansion of the universe.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="quantum.html" class="topic-card" style="display:inline-block; max-width:320px;">⚛️ Next: Quantum Mechanics →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — waves module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

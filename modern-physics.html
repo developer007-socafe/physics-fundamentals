@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Physics — Physics Fundamentals</title>
+  <meta name="description" content="Atoms, nuclei, particle physics, Standard Model, and the frontiers of modern physics.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html" class="active">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 7</div>
+      <h1>Modern Physics</h1>
+      <p class="byline">From the atom to the Standard Model, modern physics explores the deep structure of matter, the origin of mass, nuclear energy, and the questions that define the frontiers of 21st-century physics.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#atomic">Atomic models & the Bohr model</a></li>
+        <li><a href="#nuclear">Nuclear physics & radioactivity</a></li>
+        <li><a href="#particle">Particle physics & the Standard Model</a></li>
+        <li><a href="#mass">Where does mass come from?</a></li>
+        <li><a href="#frontiers">Open questions & frontiers</a></li>
+      </ol>
+    </div>
+
+    <!-- Atomic -->
+    <h2 id="atomic" class="section-title"><span class="num">1.</span> Atomic Models &amp; the Bohr Model</h2>
+    <p>By the early 1900s, experiments revealed that atoms were mostly empty space with a tiny, dense nucleus. Rutherford's gold-foil experiment (1911) fired alpha particles at thin gold — most sailed through, but a few bounced straight back, proving the nucleus was both <span class="glossary-term" data-term="A tiny, dense, positively charged core of the atom.">dense</span> and <span class="glossary-term" data-term="Radius ~10⁻¹⁵ m; 100,000× smaller than the atom.">small</span>. But why don't orbiting electrons spiral into the nucleus, radiating away energy as Maxwell's equations demand?</p>
+
+    <p>Niels Bohr (1913) proposed a radical fix: only certain orbits are allowed, and they don't radiate. An electron can jump between orbit $n$ and $n'$, emitting or absorbing a photon with energy equal to the level difference:</p>
+
+    <div class="equation">
+      $$\boxed{E_n = -\frac{13.6\,\text{eV}}{n^2},\qquad \Delta E = hf = \frac{hc}{\lambda}}$$
+    </div>
+
+    <p>This explained the <span class="glossary-term" data-term="Discrete spectral lines characteristic of each element.">atomic emission spectra</span> of hydrogen perfectly — only photons with specific energies (corresponding to allowed transitions) are emitted. Bohr's model was a stepping stone: it merged classical orbits with quantum leaps, but the full theory (quantum mechanics, covered in the previous section) replaced orbits with probability clouds — <span class="glossary-term" data-term="Atomic orbitals; probability distributions from the Schrödinger equation.">atomic orbitals</span>.</p>
+
+    <div class="figure center fade-in">
+      <svg width="460" height="170" viewBox="0 0 460 170" aria-label="Hydrogen energy levels">
+        <line x1="60" y1="30" x2="400" y2="30" stroke="#333" stroke-width="2"/>
+        <text x="50" y="34" font-size="12" fill="#333" font-family="Inter">n=∞</text>
+        <text x="52" y="22" font-size="11" fill="#777" font-family="Inter">0 eV</text>
+        <line x1="60" y1="60" x2="400" y2="60" stroke="#333" stroke-width="2"/>
+        <text x="50" y="64" font-size="12" fill="#333" font-family="Inter">n=3</text>
+        <text x="52" y="52" font-size="11" fill="#777" font-family="Inter">−1.51 eV</text>
+        <line x1="60" y1="100" x2="400" y2="100" stroke="#333" stroke-width="2"/>
+        <text x="50" y="104" font-size="12" fill="#333" font-family="Inter">n=2</text>
+        <text x="52" y="92" font-size="11" fill="#777" font-family="Inter">−3.4 eV</text>
+        <line x1="60" y1="140" x2="400" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="0"/>
+        <text x="50" y="144" font-size="12" fill="#333" font-family="Inter">n=1</text>
+        <text x="52" y="132" font-size="11" fill="#777" font-family="Inter">−13.6 eV</text>
+        <circle cx="100" cy="100" r="6" fill="#2563eb"/>
+        <circle cx="260" cy="60" r="5" fill="#2563eb"/>
+        <circle cx="340" cy="30" r="4" fill="#2563eb"/>
+        <text x="100" y="120" font-size="10" fill="#2563eb" font-family="Inter" text-anchor="middle">Lyman</text>
+        <text x="260" y="80" font-size="10" fill="#2563eb" font-family="Inter" text-anchor="middle">Balmer</text>
+        <text x="340" y="50" font-size="10" fill="#2563eb" font-family="Inter" text-anchor="middle">Paschen</text>
+      </svg>
+      <div class="caption">Hydrogen energy levels (Bohr model, 1913). Arrows show transitions producing the Lyman (UV), Balmer (visible), and Paschen (infrared) spectral series.</div>
+    </div>
+
+    <!-- Nuclear -->
+    <h2 id="nuclear" class="section-title"><span class="num">2.</span> Nuclear Physics &amp; Radioactivity</h2>
+    <p>The nucleus contains <span class="glossary-term" data-term="Protons and neutrons, held together by nuclear forces.">nucleons</span> (protons and neutrons) at densities so extreme that a teaspoon of nuclear matter weighs ~10¹⁹ kg. But nuclei are held together by a subtle balance. <span class="glossary-term" data-term="Emission of energy from unstable nuclei.">Radioactive decay</span> transforms one element into another:</p>
+
+    <div class="equation">
+      $$N(t) = N_0\,e^{-\lambda t},\qquad T_{1/2} = \frac{\ln 2}{\lambda}$$
+    </div>
+
+    <p>The <span class="glossary-term" data-term="Time for half the nuclei to decay.">half-life</span> is constant — independent of chemical environment, pressure, or temperature. Carbon-14 dating (half-life 5,730 years) lets us date organic artifacts up to ~50,000 years old. The three natural decay modes are:</p>
+
+    <ul style="margin:1em 0; padding-left:1.4rem;">
+      <li><strong>Alpha</strong> ($\alpha$): emits $^4_2\text{He}$; heavy, low penetration.</li>
+      <li><strong>Beta</strong> ($\beta$): emits an electron (or positron) and a neutrino; medium penetration.</li>
+      <li><strong>Gamma</strong> ($\gamma$): emits a high-energy photon; high penetration (requires dense shielding).</li>
+    </ul>
+
+    <div class="definition">
+      <strong>Nuclear binding energy</strong> — The energy that holds nuclei together, from Einstein's $E=mc^2$. When a heavy nucleus splits (<span class="glossary-term" data-term="Nuclear fission: splitting heavy nuclei.">fission</span>) or two light nuclei fuse (<span class="glossary-term" data-term="Nuclear fusion: combining light nuclei.">fusion</span>), mass is converted to energy. The <span class="glossary-term" data-term="Mass defect; the energy equivalent of missing mass.">mass defect</span> $\Delta E = \Delta m\,c^2$ powers the Sun, nuclear reactors, and stars.
+    </div>
+
+    <div class="equation">
+      $$\Delta E = \Delta m\,c^2$$
+    </div>
+
+    <!-- Particle physics -->
+    <h2 id="particle" class="section-title"><span class="num">3.</span> The Standard Model of Particle Physics</h2>
+    <p>Everything in the universe (as far as we know) is made of <span class="glossary-term" data-term="The elementary particles; quarks, leptons, gauge bosons, Higgs.">elementary particles</span>, organized in the <span class="glossary-term" data-term="The theory describing 3 of 4 fundamental forces and known elementary particles.">Standard Model</span>. There are two families of matter and the forces that act on them:</p>
+
+    <table>
+      <thead>
+        <tr><th>Category</th><th>Particles</th><th>Mass</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quarks</strong> (matter)</td><td>up, down, charm, strange, top, bottom</td><td>2–173 GeV/c²</td></tr>
+        <tr><td><strong>Leptons</strong> (matter)</td><td>electron, muon, tau, + 3 neutrinos</td><td>0–178 MeV/c²</td></tr>
+        <tr><td><strong>Force carriers</strong></td><td>photon (γ), W/Z bosons, gluon (g)</td><td>0 (γ,g), 80–91 GeV</td></tr>
+        <tr><td><strong>Higgs</strong></td><td>one scalar boson</td><td>125 GeV/c²</td></tr>
+      </tbody>
+    </table>
+
+    <p>The three light quarks (up, down, strange) combine to form protons, neutrons, pions, and the zoo of hadrons. The Higgs boson (discovered 2012) confirmed the mechanism by which the W and Z bosons — and through them, all elementary particles — acquire mass. But the Higgs mechanism explains only ~1% of the proton's mass; most of it comes from the <span class="glossary-term" data-term="Energy bound in the strong force; most visible mass comes from binding energy, not quark rest mass.">strong interaction binding energy</span> via $E = mc^2$.</p>
+
+    <div class="tip">
+      <strong>What the Standard Model doesn't include.</strong> Gravity (described by general relativity) is not yet quantized. Dark matter, dark energy, and neutrino masses are observed but unexplained. The Standard Model is a <em>symptom</em> of a deeper theory — string theory, loop quantum gravity, or something we haven't imagined — that unifies all four forces.
+    </div>
+
+    <!-- Mass -->
+    <h2 id="mass" class="section-title"><span class="num">4.</span> Where Does Mass Come From?</h2>
+    <p>Most of the mass of your body didn't come from the Higgs. A proton weighs ~938 MeV/c², but its two up quarks and one down quark sum to only ~5 MeV/c². The other 99% comes from <span class="glossary-term" data-term="Energy of gluon fields and quark motion inside protons/neutrons.">gluonic binding energy</span> — the kinetic and potential energy of quarks and gluons trapped by the <span class="glossary-term" data-term="The strong force gets stronger at long distances (confinement).">strong force</span>. This is a direct consequence of $E = mc^2$: <strong>energy has mass</strong>.</p>
+
+    <div class="equation">
+      $$\boxed{E = mc^2}$$
+    </div>
+
+    <p>The Higgs field gives mass to the <em>elementary</em> particles (W, Z, electrons) via the <span class="glossary-term" data-term="Spontaneous symmetry breaking of the Higgs field.">Higgs mechanism</span>. But the mass of protons and neutrons — and hence of planets, people, and pianos — arises from the strong force. We are, quite literally, made of <span class="glossary-term" data-term="Star stuff; elements forged in stars.">stardust</span> and binding energy.</p>
+
+    <!-- Frontiers -->
+    <h2 id="frontiers" class="section-title"><span class="num">5.</span> Open Questions &amp; Frontiers</h2>
+    <p>Modern physics has answered profound questions, but deeper ones remain:</p>
+
+    <table>
+      <thead>
+        <tr><th>Question</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Quantum gravity</strong></td><td>Reconcile general relativity (smooth spacetime) with quantum mechanics (discrete, probabilistic).</td></tr>
+        <tr><td><strong>Dark matter</td><td>85% of matter in the universe is invisible — inferred from galaxy rotation curves but never directly detected.</td></tr>
+        <tr><td><strong>Dark energy</strong></td><td>The universe's expansion is accelerating, driven by energy with negative pressure.</td></tr>
+        <tr><td><strong>Unification</strong></td><td>All forces were one at the Big Bang; can we find a single theory of everything?</td></tr>
+        <tr><td><strong>Measurement problem</strong></td><td>Why do superpositions "collapse" to definite outcomes? Is consciousness involved?</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <strong>The Standard Model is incomplete, not wrong.</strong> Every prediction tested — from the magnetic moment of the electron to the Higgs boson mass — matches experiment. But it contains ~20 free parameters (masses of particles, coupling strengths) that the Standard Model itself cannot predict. A deeper theory should explain <em>why</em> the masses and forces have the values they do. String theory, with its extra dimensions, is one ambitious attempt; others include loop quantum gravity and the search for physics beyond the Standard Model at the Large Hadron Collider.
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Atoms have tiny, dense nuclei surrounded by electron orbitals — Bohr's quantized model explained hydrogen's spectrum.</li>
+        <li>Radioactive decay follows exponential laws with constant half-lives; nuclear binding energy ($E=\Delta mc^2$) powers stars and reactors.</li>
+        <li>The Standard Model organizes particles into quarks, leptons, and force carriers — with the Higgs giving mass to elementary particles.</li>
+        <li>99% of visible mass comes from strong-force binding energy, not the Higgs — we are made of $E=mc^2$.</li>
+        <li>Frontiers remain: dark matter, dark energy, quantum gravity, and a unified theory.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="index.html" class="topic-card" style="display:inline-block; max-width:320px;">🏠 Back to Topics →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — modern physics and conclusion. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

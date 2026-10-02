@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relativity — Physics Fundamentals</title>
+  <meta name="description" content="Special and general relativity: spacetime, time dilation, length contraction, Lorentz transforms, gravity as curvature.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html" class="active">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <article class="article">
+    <header class="article-header">
+      <div class="eyebrow">Topic 6</div>
+      <h1>Relativity</h1>
+      <p class="byline">Albert Einstein's twin pillars: special relativity rewrites space and time into spacetime, while general relativity describes gravity not as a force but as the curvature of that spacetime itself — the motion of planets, the bending of light, and the expansion of the universe.</p>
+    </header>
+
+    <div class="toc fade-in">
+      <ol>
+        <li><a href="#inertial">The two postulates & inertial frames</a></li>
+        <li><a href="#lorentz">Lorentz transforms, time dilation & length contraction</a></li>
+        <li><a href="#spacetime">Spacetime & the invariant interval</a></li>
+        <li><a href="#light-clock">The light-clock thought experiment</a></li>
+        <li><a href="#general">General relativity: gravity as curvature</a></li>
+        <li><a href="#cosmology">Cosmology & black holes</a></li>
+      </ol>
+    </div>
+
+    <!-- Inertial frames -->
+    <h2 id="inertial" class="section-title"><span class="num">1.</span> The Two Postulates</h2>
+    <p><span class="glossary-term" data-term="A reference frame in which the laws of physics take their simplest form and Newton's first law holds.">Inertial reference frames</span> are those moving at constant velocity relative to each other. Before Einstein, physicists believed there was an absolute rest frame (the "aether"). Einstein's special relativity (1905) rests on two bold postulates:</p>
+
+    <div class="definition">
+      <strong>Postulate 1 (Principle of Relativity)</strong> — The laws of physics are the same in every inertial frame. No inertial experiment can tell you whether you're "really" moving.
+    </div>
+    <div class="definition">
+      <strong>Postulate 2 (Invariance of $c$)</strong> — The speed of light in vacuum, $c = 299{,}792{,}458$ m/s, is the same for all observers, regardless of the motion of the source or the observer.
+    </div>
+
+    <p>The second postulate is the shock. In everyday life, speeds add: if you walk 3 mph forward on a train going 60 mph, someone on the platform sees you at 63 mph. But light doesn't work that way. If you shine a flashlight forward on a train going 0.9$c$, both you and the platform watcher measure the light beam at exactly $c$ — not $1.9c$. Space and time must bend to keep this true.</p>
+
+    <div class="example">
+      <strong>The futility of catching up to light.</strong> Nothing with mass can reach $c$. As an object's speed approaches $c$, its <span class="glossary-term" data-term="Relativistic mass increase; γ → ∞ as v → c.">relativistic factor</span> $\gamma = 1/\sqrt{1-v^2/c^2}$ blows up to infinity, requiring infinite energy to accelerate further. Photons (massless) travel <em>at</em> $c$; everything else travels <em>below</em> it.
+    </div>
+
+    <!-- Lorentz -->
+    <h2 id="lorentz" class="section-title"><span class="num">2.</span> Time, Length &amp; the Lorentz Transform</h2>
+    <p>To keep $c$ constant across frames, space and time mix together. The <span class="glossary-term" data-term="γ = 1/√(1 − v²/c²); diverges as v approaches c.">Lorentz factor</span> $\gamma$ governs all relativistic effects:</p>
+
+    <div class="equation">
+      $$\gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$
+    </div>
+
+    <div class="equation">
+      $$\Delta t' = \gamma\,\Delta t\qquad\text{(time dilation)}\qquad L' = \frac{L_0}{\gamma}\qquad\text{(length contraction)}$$
+    </div>
+
+    <p><span class="glossary-term" data-term="Moving clocks run slow relative to stationary ones.">Time dilation</span>: a clock in motion ticks slower by factor $\gamma$. <span class="glossary-term" data-term="Objects in motion contract along the direction of motion.">Length contraction</span>: objects shrink along their direction of motion by $\gamma$. These are not illusions — they're real, measurable effects. The GPS satellites orbiting Earth experience both: their clocks run fast by 45 μs/day due to weaker gravity (general relativity), but slow by 7 μs/day due to their speed (special relativity). Without relativistic corrections, GPS would drift by kilometers within hours.</p>
+
+    <div class="equation">
+      $$\begin{pmatrix} ct' \\ x' \end{pmatrix} = \begin{pmatrix} \gamma & -\gamma\beta \\ -\gamma\beta & \gamma \end{pmatrix}\begin{pmatrix} ct \\ x \end{pmatrix},\qquad \beta = v/c$$
+    </div>
+
+    <!-- Light clock -->
+    <h2 id="light-clock" class="section-title"><span class="num">3.</span> The Light-Clock Thought Experiment</h2>
+    <p>The cleanest way to see time dilation: imagine a clock made of two mirrors with a photon bouncing between them. In the clock's rest frame, the photon travels a vertical path of length $L$ each tick. But to a watcher moving past, the photon traces a longer diagonal path. Since light travels at the same speed $c$ in both frames, the moving observer sees the photon travel <em>further</em> — and since speed is the same, the ticks must take <em>longer</em>:</p>
+
+    <div class="sim fade-in">
+      <canvas data-sim="lightclock" width="560" height="360" style="background:#f5f3f0;"></canvas>
+      <div class="caption"><strong>Light clock and time dilation.</strong> On the left, a clock at rest with a photon bouncing between mirrors. On the right, the same clock as seen by a fast-moving observer: the photon now travels a longer diagonal path at the same speed $c$, so each tick takes longer by the factor $\gamma$. Adjust velocity to see how the effect grows as $v$ approaches $c$.</div>
+    </div>
+
+    <div class="equation">
+      $$\Delta t' = \gamma\,\Delta t = \frac{\Delta t}{\sqrt{1-v^2/c^2}}$$
+    </div>
+
+    <div class="note">
+      This is the <em>only</em> relativity thought-experiment I know of that has a ready-made simulation. The derivation is pure geometry: a right triangle with legs $L$ (half the vertical bounce) and $v\,\Delta t'/2$ (horizontal drift), hypotenuse $c\,\Delta t'/2$, giving $\gamma$ by Pythagoras.
+    </div>
+
+    <!-- Spacetime -->
+    <h2 id="spacetime" class="section-title"><span class="num">4.</span> Spacetime &amp; the Invariant Interval</h2>
+    <p>Hermann Minkowski (1908) realized Einstein's equations reveal a deeper truth: space and time aren't separate. They fuse into a four-dimensional <span class="glossary-term" data-term="Union of space and time into a single 4D manifold.">spacetime</span>. Events are labeled by $(ct, x, y, z)$. The Lorentz transforms are rotations in spacetime, mixing the time and space coordinates just as a ordinary rotation mixes $x$ and $y$ axes.</p>
+
+    <div class="equation">
+      $$\boxed{ds^2 = -c^2 dt^2 + dx^2 + dy^2 + dz^2}$$
+    </div>
+
+    <p>This is the <span class="glossary-term" data-term="The spacetime interval; invariant under Lorentz transformations.">invariant interval</span> $ds^2$: every observer, regardless of motion, agrees on its value. It's the spacetime analogue of the Pythagorean distance. The minus sign on the time component (the "mostly-plus" metric) is what makes timelike and spacelike intervals fundamentally different, and sets a cosmic speed limit.</p>
+
+    <div class="figure center fade-in">
+      <svg width="460" height="160" viewBox="0 0 460 160" aria-label="Spacetime diagram">
+        <line x1="40" y1="140" x2="420" y2="140" stroke="#333" stroke-width="2"/>
+        <line x1="40" y1="140" x2="40" y2="30" stroke="#333" stroke-width="2"/>
+        <text x="420" y="155" font-size="12" fill="#333" font-family="Inter">x</text>
+        <text x="35" y="25" font-size="12" fill="#333" font-family="Inter">ct</text>
+        <line x1="40" y1="140" x2="200" y2="60" stroke="#2563eb" stroke-width="2"/>
+        <text x="120" y="52" font-size="11" fill="#2563eb" font-family="Inter">worldline (at rest)</text>
+        <line x1="40" y1="140" x2="320" y2="60" stroke="#0ea5e9" stroke-width="2"/>
+        <text x="200" y="52" font-size="11" fill="#0ea5e9" font-family="Inter">worldline (moving)</text>
+        <line x1="40" y1="140" x2="400" y2="30" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 3"/>
+        <text x="220" y="30" font-size="11" fill="#ef4444" font-family="Inter">light cone</text>
+      </svg>
+      <div class="caption">A spacetime diagram: vertical axis is time ($ct$), horizontal is space ($x$). Straight lines are object worldlines. The dashed red 45° lines are light cones — nothing inside can escape to outside.</div>
+    </div>
+
+    <!-- General relativity -->
+    <h2 id="general" class="section-title"><span class="num">5.</span> General Relativity: Gravity as Curvature</h2>
+    <p>In 1915, Einstein extended relativity to accelerating frames and gravity. The key insight: <span class="glossary-term" data-term="Mass-energy curves spacetime; gravity is not a force but geometry.">gravity isn't a force</span> — it's the curvature of spacetime caused by mass and energy. Objects in free fall aren't being "pulled"; they're following the straightest possible paths through curved geometry. The <span class="glossary-term" data-term="Gμν = (8πG/c⁴)Tμν; relates spacetime curvature to energy-momentum.">Einstein field equations</span> relate curvature to the matter that creates it:</p>
+
+    <div class="equation">
+      $$\boxed{G_{\mu\nu} = \frac{8\pi G}{c^4}\,T_{\mu\nu}}$$
+    </div>
+
+    <p>The left side ($G_{\mu\nu}$, the Einstein tensor) describes how spacetime curves. The right side ($T_{\mu\nu}$, the energy-momentum tensor) describes where mass, energy, and momentum are. They are equal — <strong>curved spacetime tells matter how to move; matter tells spacetime how to curve.</strong></p>
+
+    <div class="definition">
+      <strong>Equivalence principle.</strongstrong> There is no local experiment that can distinguish free fall in a gravitational field from floating in empty space. This is why an astronaut in orbit feels weightless — they and the spacecraft are both following the same straightest path through curved spacetime.
+    </div>
+
+    <div class="equation">
+      $$r_s = \frac{2GM}{c^2}\qquad\text{(Schwarzschild radius / event horizon)}$$
+    </div>
+
+    <div class="tip">
+      <strong>Testable predictions.</strong> General relativity made three verified predictions that Newton couldn't explain: (1) the bending of starlight by the Sun (1919 Eddington expedition — the famous "eclipse" result), (2) the anomalous perihelion advance of Mercury (43 arcseconds/century unexplained by Newtonian gravity), and (3) gravitational redshift (light loses energy climbing out of a gravity well).
+    </div>
+
+    <!-- Cosmology -->
+    <h2 id="cosmology" class="section-title"><span class="num">6.</span> Cosmology &amp; Black Holes</h2>
+    <p>Einstein's equations applied to the universe as a whole give the <span class="glossary-term" data-term="Expanding-universe solutions to Einstein's equations (Friedmann-Lemaître-Robertson-Walker metric).">Friedmann equations</span>. In 1929, Hubble confirmed what these equations predicted: <span class="glossary-term" data-term="Galaxies recede from us; more distant ones recede faster (v = H₀d).">the universe is expanding</span>. Run the clock backward, and everything was denser — the <span class="glossary-term" data-term="The hot dense beginning of the universe ~13.8 billion years ago.">Big Bang</span>.</p>
+
+    <p>When enough mass concentrates in one place, spacetime curves so severely that not even light can escape — a <span class="glossary-term" data-term="A region where gravity is so strong that escape velocity exceeds c.">black hole</span>. The boundary is the <span class="glossary-term" data-term="The surface of no return around a black hole.">event horizon</span> at the Schwarzschild radius $r_s = 2GM/c^2$. Inside, all future paths lead to the singularity.</p>
+
+    <div class="figure center fade-in">
+      <svg width="440" height="150" viewBox="0 0 440 150" aria-label="Hubble's law and Big Bang">
+        <circle cx="60" cy="60" r="14" fill="#2563eb"/>
+        <circle cx="120" cy="70" r="10" fill="#2563eb"/>
+        <circle cx="180" cy="80" r="8" fill="#2563eb"/>
+        <circle cx="260" cy="90" r="6" fill="#2563eb"/>
+        <circle cx="340" cy="100" r="5" fill="#2563eb"/>
+        <line x1="20" y1="110" x2="60" y2="60" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="20" y1="110" x2="340" y2="100" stroke="#2563eb" stroke-width="1.5" marker-end="url(#arr)"/>
+        <text x="10" y="110" font-size="12" fill="#2563eb" font-family="Inter">us</text>
+        <text x="220" y="130" font-size="11" fill="#555" font-family="Inter">galaxies recede: v = H₀·d</text>
+      </svg>
+      <div class="caption">Hubble's law: more distant galaxies recede faster, evidence that the universe began in a hot, dense state.</div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>The speed of light $c$ is constant for all observers, which forces space and time to mix — leading to time dilation and length contraction.</li>
+        <li>Space and time are unified into 4D spacetime; the interval $ds^2$ is invariant, and Lorentz transforms are rotations in this geometry.</li>
+        <li>Gravity is not a force but the curvature of spacetime — Einstein's equation $G_{\mu\nu} = (8\pi G/c^4)T_{\mu\nu}$ links matter to geometry.</li>
+        <li>General relativity's predictions — light bending, Mercury's orbit, gravitational redshift — are confirmed to high precision.</li>
+        <li>Cosmological solutions gave us the Big Bang and the expanding universe; extreme curvature produces black holes and event horizons.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="modern-physics.html" class="topic-card" style="display:inline-block; max-width:320px;">🌠 Next: Modern Physics →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — relativity module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/simulations.js"></script>
+</body>
+</html>

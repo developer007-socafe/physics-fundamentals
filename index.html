@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Fundamentals — An Interactive Guide</title>
+  <meta name="description" content="An educational, interactive guide to the fundamentals of physics: mechanics, thermodynamics, electromagnetism, waves, quantum mechanics, relativity, and modern physics.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <!-- MathJax for beautiful equations -->
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], processEscapes: true },
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html" class="active">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero fade-in">
+    <div class="eyebrow">A free, interactive textbook</div>
+    <h1>Fundamentals of Physics</h1>
+    <p class="lead">An educational website that explains the laws governing the universe — from the fall of an apple to the dance of galaxies — with clear explanations, equations, and interactive simulations you can play with.</p>
+    <div class="topic-grid">
+      <a href="mechanics.html" class="topic-card fade-in">
+        <div class="icon">🎯</div>
+        <h3>Classical Mechanics</h3>
+        <p>Motion, forces, energy, momentum, and the laws that govern everyday objects.</p>
+        <span class="read">Start with Mechanics →</span>
+      </a>
+      <a href="thermodynamics.html" class="topic-card fade-in">
+        <div class="icon">🔥</div>
+        <h3>Thermodynamics</h3>
+        <p>Heat, work, entropy, and the arrow of time that shapes stars and engines.</p>
+        <span class="read">Explore Thermodynamics →</span>
+      </a>
+      <a href="electromagnetism.html" class="topic-card fade-in">
+        <div class="icon">⚡</div>
+        <h3>Electromagnetism</h3>
+        <p>Electricity, magnetism, light, and Maxwell's elegant unification.</p>
+        <span class="read">Dive into E&M →</span>
+      </a>
+      <a href="waves.html" class="topic-card fade-in">
+        <div class="icon">〰️</div>
+        <h3>Waves & Oscillations</h3>
+        <p>Sound, light, interference, and resonance that connect the micro and macro.</p>
+        <span class="read">Ride the Waves →</span>
+      </a>
+      <a href="quantum.html" class="topic-card fade-in">
+        <div class="icon">⚛️</div>
+        <h3>Quantum Mechanics</h3>
+        <p>The strange rules of the subatomic world: wavefunctions, uncertainty, and tunneling.</p>
+        <span class="read">Enter the Quantum →</span>
+      </a>
+      <a href="relativity.html" class="topic-card fade-in">
+        <div class="icon">🌌</div>
+        <h3>Relativity</h3>
+        <p>Spacetime, the speed of light, and how motion bends time and space.</p>
+        <span class="read">Embrace Relativity →</span>
+      </a>
+      <a href="modern-physics.html" class="topic-card fade-in">
+        <div class="icon">🌠</div>
+        <h3>Modern Physics</h3>
+        <p>Atoms, nuclei, the Standard Model, and the deep structure of matter.</p>
+        <span class="read">Discover More →</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="article" style="max-width:880px; margin:0 auto; padding: clamp(2.5rem,5vw,4rem) clamp(1.25rem,3vw,2.25rem);">
+    <div class="fade-in" style="text-align:center;">
+      <h2 class="eyebrow" style="justify-content:center; display:inline-block;">How to use this guide</h2>
+    </div>
+    <div class="toc fade-in">
+      <ol>
+        <li>Each topic starts with core concepts and builds up to deeper ideas.</li>
+        <li>Bold terms (<span class="glossary-term" data-term="A quantity with magnitude and direction.">vector</span>) carry quick definitions on hover.</li>
+        <li>Equations are rendered with MathJax — e.g. $E = mc^2$ — and each section ends with a <em>Key Takeaway</em>.</li>
+        <li>Green <span style="background:rgba(38,99,231,0.1);padding:0 4px;border-radius:4px;">simulations</span> let you drag sliders and see physics in action.</li>
+      </ol>
+    </div>
+    <p style="text-align:center; color:var(--text-dim); margin-top:1.5rem;">Built as a learning resource. No login, no ads — just curiosity-driven physics. © 2026.</p>
+  </section>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — an educational project. Equations rendered with <a href="https://mathjax.org/" target="_blank" rel="noopener">MathJax</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
