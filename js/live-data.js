@@ -35,13 +35,15 @@
      over https on GitHub Pages and a plain http:// fetch from an https
      page is blocked as mixed content. The documented http:// URL is
      still used as the fallback. */
+  /* WhereTheISSAt serves the same sub-satellite point over HTTPS with
+     Access-Control-Allow-Origin: *, and additionally reports altitude and
+     velocity. Open Notify's own HTTPS endpoint is broken (it answers on
+     http:// only, which a browser refuses to load from an https page), so it
+     is kept last purely as a fallback for anyone running this over http. */
   var ISS_URLS = [
-    'https://api.open-notify.org/iss-now.json',
+    'https://api.wheretheiss.at/v1/satellites/25544',
     'http://api.open-notify.org/iss-now.json'
   ];
-  /* This service returns only latitude and longitude. It does not report
-     altitude or velocity, so those fields are declared absent up front
-     rather than shown as broken values. */
   var ISS_FIELDS_ABSENT = 'not reported by this service';
 
   var OFFLINE_HINT = 'Live feeds need an internet connection and this page served over http(s) — open the site through a local server rather than a file:// path.';
@@ -363,8 +365,11 @@
     setStatus(status, 'Contacting the ISS position service…', false);
 
     getJSONFrom(ISS_URLS).then(function (data) {
-      var pos = data && data.iss_position;
-      if (!pos) {
+      /* The two feeds use different shapes: WhereTheISSAt puts lat/lon at the
+         top level, Open Notify nests them under `iss_position`. Read both so
+         the fallback chain works either way. */
+      var pos = (data && data.iss_position) || data || {};
+      if (!pos || pos.latitude === undefined) {
         setStatus(status, 'The ISS service replied without a position. Try again shortly.', true);
         return;
       }
@@ -378,7 +383,9 @@
       if (latEl) latEl.textContent = (lat >= 0 ? '+' : '−') + Math.abs(lat).toFixed(3) + '°';
       if (lonEl) lonEl.textContent = (lon >= 0 ? '+' : '−') + Math.abs(lon).toFixed(3) + '°';
 
-      var alt = Number(pos.altitude_km);
+      /* Altitude is `altitude_km` on Open Notify and `altitude` (kilometres,
+         per its `units` field) on WhereTheISSAt. */
+      var alt = Number(pos.altitude_km !== undefined ? pos.altitude_km : pos.altitude);
       if (altEl) {
         altEl.textContent = isFinite(alt)
           ? alt.toFixed(1) + ' km above sea level'
@@ -387,7 +394,10 @@
       var vel = Number(pos.velocity);
       if (velEl) {
         velEl.textContent = isFinite(vel)
-          ? vel.toFixed(2) + ' km/h (' + (vel * 1000 / 3600).toFixed(2) + ' km/s)'
+          /* km/h -> km/s: divide by 3600. The old expression multiplied by
+             1000 first, which reported ~7,600 km/s for the ISS — faster than
+             escape velocity from Earth, and clearly wrong. */
+          ? vel.toFixed(2) + ' km/h (' + (vel / 3600).toFixed(2) + ' km/s)'
           : ISS_FIELDS_ABSENT;
       }
 
