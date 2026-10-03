@@ -30,7 +30,10 @@
           <a href="waves.html">Waves</a>
           <a href="quantum.html">Quantum</a>
           <a href="relativity.html">Relativity</a>
+                    
           <a href="modern-physics.html">Modern Physics</a>
+          <a href="black-holes.html">Black Holes</a>
+          <a href="time-travel.html">Time Travel</a>
           <div class="dropdown-divider" aria-hidden="true"></div>
           <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
         </div>
@@ -85,6 +88,18 @@
         <p>Atoms, nuclei, the Standard Model, and the deep structure of matter.</p>
         <span class="read">Discover More →</span>
       </a>
+      <a href="black-holes.html" class="topic-card fade-in">
+        <div class="icon">⚫</div>
+        <h3>Black Holes</h3>
+        <p>Event horizons, tidal forces, Hawking radiation, and the evidence for them.</p>
+        <span class="read">Enter the Horizon →</span>
+      </a>
+      <a href="time-travel.html" class="topic-card fade-in">
+        <div class="icon">⏳</div>
+        <h3>Time Travel</h3>
+        <p>Light cones, the twin paradox, Penrose diagrams, and why the universe forbids it.</p>
+        <span class="read">Warp Forward →</span>
+      </a>
     </div>
   </section>
 
@@ -101,12 +116,68 @@
       </ol>
     </div>
     <p style="text-align:center; color:var(--text-dim); margin-top:1.5rem;">Built as a learning resource. No login, no ads — just curiosity-driven physics. © 2026.</p>
+
+    <!-- ============================ LIVE DATA ============================ -->
+    <div class="live-head">
+      <h2 class="eyebrow">Live from public APIs</h2>
+      <p class="live-sub">Real data from free, no-auth public APIs — refreshed each time you load this page.</p>
+    </div>
+
+    <!-- 1. NASA APOD -->
+    <section class="live-card fade-in" aria-labelledby="apod-heading">
+      <div class="live-head">
+        <h3 id="apod-heading">🌌 Astronomy Picture of the Day</h3>
+        <span class="live-badge">NASA · free</span>
+      </div>
+      <p class="live-meta" style="margin-top:0;"><a href="https://api.nasa.gov/" target="_blank" rel="noopener">api.nasa.gov</a> — no key required, DEMO_KEY tier.</p>
+      <p id="apod-status" class="live-status">Contacting NASA's Astronomy Picture of the Day service…</p>
+      <div id="apod-figure" hidden>
+        <div id="apod-media"></div>
+        <p id="apod-title" class="live-title"></p>
+        <p id="apod-meta" class="live-meta"></p>
+        <div id="apod-explanation" class="live-body"></div>
+        <p class="live-meta"><a id="apod-media-link" href="#" target="_blank" rel="noopener" hidden>Open the full-resolution media →</a></p>
+      </div>
+    </section>
+
+    <!-- 2. ISS -->
+    <section class="live-card fade-in" aria-labelledby="iss-heading">
+      <div class="live-head">
+        <h3 id="iss-heading">🛰️ ISS live position</h3>
+        <span class="live-badge">Open Notify · free</span>
+      </div>
+      <p class="live-meta" style="margin-top:0;"><a href="http://open-notify.org/" target="_blank" rel="noopener">open-notify.org</a> — no key required.</p>
+      <p id="iss-status" class="live-status">Contacting the ISS position service…</p>
+      <div id="iss-track" hidden>
+        <svg class="iss-map" viewBox="0 0 100 50" role="img" aria-labelledby="iss-heading" preserveAspectRatio="none">
+          <rect x="0" y="0" width="100" height="50" fill="none"/>
+          <!-- graticule: 20 deg lon, 30 deg lat -->
+          <g stroke="currentColor" stroke-width="0.2" opacity="0.3" fill="none">
+            <path d="M20 0 V50 M40 0 V50 M60 0 V50 M80 0 V50"/>
+            <path d="M0 16.67 H100 M0 33.33 H100"/>
+            <path d="M0 25 H100" stroke-dasharray="1 1"/>
+          </g>
+          <!-- equator-to-ISS track -->
+          <path id="iss-track-line" d="M0 25 L0 25" stroke="currentColor" stroke-width="0.4" opacity="0.7" fill="none"/>
+          <circle id="iss-dot" cx="50" cy="25" r="1.6" fill="currentColor"/>
+        </svg>
+        <dl class="live-rows">
+          <div class="live-row"><dt>Latitude</dt><dd id="iss-lat">—</dd></div>
+          <div class="live-row"><dt>Longitude</dt><dd id="iss-lon">—</dd></div>
+          <div class="live-row"><dt>Altitude</dt><dd id="iss-alt">—</dd></div>
+          <div class="live-row"><dt>Speed</dt><dd id="iss-vel">—</dd></div>
+        </dl>
+        <p id="iss-verdict" class="live-meta"></p>
+        <p id="iss-stamp" class="live-meta"></p>
+      </div>
+    </section>
   </section>
 
   <footer class="site-footer">
-    <p>Physics Fundamentals — an educational project. Equations rendered with <a href="https://mathjax.org/" target="_blank" rel="noopener">MathJax</a>.</p>
+    <p>Physics Fundamentals — an educational project. Equations rendered with <a href="https://mathjax.org/" target="_blank" rel="noopener">MathJax</a>. Live data from NASA, USGS and Open Notify.</p>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/live-data.js"></script>
 </body>
 </html>

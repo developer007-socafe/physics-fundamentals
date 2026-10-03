@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Holes &amp; Gravitation — Physics Fundamentals</title>
+  <meta name="description" content="Black holes: event horizons, Schwarzschild radius, gravitational redshift, tidal forces, accretion disks, Hawking radiation, lensing and the observational evidence.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <a href="black-holes.html" class="active">Black Holes</a>
+          <a href="time-travel.html">Time Travel</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+      <div class="header-tools">
+        <input type="search" id="searchBox" class="search-box" placeholder="SEARCH…" aria-label="Search topics">
+      </div>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="article-header">
+      <div class="breadcrumb"><a href="index.html">← Back to the topics</a></div>
+      <h1>Black Holes &amp; Gravitation</h1>
+      <p class="subtitle">Where gravity wins, and what it leaves behind</p>
+      <div class="toc">
+        <strong>Contents</strong>
+        <ol>
+          <li><a href="#horizon">The event horizon</a></li>
+          <li><a href="#redshift">Gravitational redshift</a></li>
+          <li><a href="#tidal">Tidal forces &amp; spaghettification</a></li>
+          <li><a href="#accretion">Accretion disks &amp; jets</a></li>
+          <li><a href="#hawking">Hawking radiation</a></li>
+          <li><a href="#lensing">Gravitational lensing</a></li>
+          <li><a href="#evidence">The observational evidence</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Event horizon -->
+    <h2 id="horizon" class="section-title"><span class="num">1.</span> The Event Horizon</h2>
+    <p>A black hole is not a hole in space. It is a region of spacetime where the curvature is so extreme that every possible future-directed path leads to the same place: the singularity. The boundary of that region is the <strong>event horizon</strong>, and it is not a physical surface — nothing special happens as you cross it. Locally, an infalling observer notices nothing unusual.</p>
+
+    <p>For a non-rotating, uncharged black hole — a <em>Schwarzschild</em> black hole — the horizon sits at the Schwarzschild radius, the single length scale you can build from a mass and the speed of light:</p>
+    <div class="equation">
+      $$r_s = \frac{2GM}{c^2}$$
+    </div>
+
+    <p>Note how little else enters. The radius of a black hole depends on its mass and nothing else — no material, no chemical composition. A teaspoon of neutron-star matter crushed to $3.2 \times 10^{30}$ kg would have $r_s \approx 4.7$ km, smaller than a city.</p>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 700 300" role="img" aria-labelledby="bh-horizon-title bh-horizon-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="bh-horizon-title">Cross-section of a Schwarzschild black hole</title>
+        <desc id="bh-horizon-desc">Radial diagram showing the event horizon at the Schwarzschild radius, with the singularity drawn as a hatched central region and radial light rays bending inward as they approach.</desc>
+
+        <!-- light ray arrows (bent inward) -->
+        <defs>
+          <marker id="arr-k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+          <pattern id="hatch-k" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="8" stroke="currentColor" stroke-width="2" opacity="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- singularity -->
+        <circle cx="350" cy="150" r="54" fill="url(#hatch-k)" stroke="currentColor" stroke-width="2.5"/>
+        <text x="350" y="155" text-anchor="middle" font-size="15" font-family="monospace" fill="currentColor">SINGULARITY</text>
+
+        <!-- event horizon -->
+        <circle cx="350" cy="150" r="120" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="10 6"/>
+        <text x="350" y="52" text-anchor="middle" font-size="14" font-family="monospace" fill="currentColor">EVENT HORIZON  r = rₛ = 2GM/c²</text>
+
+        <!-- outer region marker -->
+        <line x1="230" y1="150" x2="230" y2="252" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        <text x="230" y="270" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">rₛ</text>
+        <line x1="350" y1="270" x2="350" y2="282" stroke="currentColor" stroke-width="1.5" opacity="0.6"/>
+        <text x="350" y="296" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">0</text>
+
+        <!-- infalling light rays, bent toward the hole -->
+        <path d="M 90 60 Q 250 70 322 116" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr-k)" opacity="0.8"/>
+        <path d="M 90 240 Q 250 230 322 184" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr-k)" opacity="0.8"/>
+        <text x="96" y="46" font-size="12" font-family="monospace" fill="currentColor" opacity="0.8">infalling light — every path bends inward</text>
+      </svg>
+      <div class="caption">Radial structure of a Schwarzschild black hole. Outside the dashed horizon light can still escape; inside, every future path ends at the singularity.</div>
+    </div>
+
+    <div class="tip">
+      <strong>Escape velocity intuition</strong> — in Newtonian gravity, escape velocity is $v_\text{esc} = \sqrt{2GM/r}$. Set $v_\text{esc} = c$ and you recover $r_s = 2GM/c^2$. The Newtonian argument is a mnemonic here, not a derivation, but the answer it gives is exactly right.
+    </div>
+
+    <div class="equation">
+      $$v_\text{esc} = \sqrt{\frac{2GM}{r}} = c \;\Longrightarrow\; r_s = \frac{2GM}{c^2}$$
+    </div>
+
+    <div class="example">
+      <strong>Example.</strong> The Sun, were it replaced by a black hole of the same mass, would have $r_s \approx 3.0$ km — but it would not be brighter in the sky. Black holes have no surface to emit from. The danger is purely gravitational: the orbit of Earth would be badly disturbed at a distance of about $10^9$ m, roughly a thousand times the original orbit.
+    </div>
+
+    <!-- Redshift -->
+    <h2 id="redshift" class="section-title"><span class="num">2.</span> Gravitational Redshift</h2>
+    <p>Light climbing out of a gravitational well loses energy. To a distant observer the light is redshifted; to one hovering just above the horizon it is blueshifted. For a static observer at radius $r$ outside a mass $M$:</p>
+    <div class="equation">
+      $$\frac{\nu_\infty}{\nu_r} = \frac{1}{\sqrt{1 - r_s/r}}$$
+    </div>
+
+    <p>The clock rate goes with it. Proper time for the hovering observer, relative to a clock at infinity:</p>
+    <div class="equation">
+      $$d\tau = \sqrt{1 - \frac{r_s}{r}}\; dt$$
+    </div>
+
+    <p>As $r \to r_s$ the factor vanishes — to an external observer a clock at the horizon appears to freeze forever. This is the origin of the "frozen star" pictures you may have seen. It is a coordinate illusion: the infalling observer crosses the horizon in finite proper time.</p>
+
+    <div class="equation">
+      $$t_\text{cross} = \int_{r_s}^{r} \frac{dr'}{\sqrt{2GM/r' - 2GM/r}} = \text{finite}$$
+    </div>
+
+    <div class="tip">
+      <strong>Where this is measurable</strong> — gravitational redshift is confirmed by the Pound–Rebka experiment (1960), which shifted light by a factor of $2.5 \times 10^{-15}$ across Earth's height, and by the Thermal Atmosphere Measurement package on GPS satellites.
+    </div>
+
+    <!-- Tidal -->
+    <h2 id="tidal" class="section-title"><span class="num">3.</span> Tidal Forces &amp; Spaghettification</h2>
+    <p>"Infinitely dense" is wrong and dangerously so. The singularity is not a place — it is a place <em>time</em> runs out. What actually destroys an infalling object is the <strong>differential</strong> gravity across it: your feet feel a stronger pull than your head, and the object is stretched.</p>
+
+    <p>The stretching is quantified by the geodesic deviation equation, whose Riemann curvature term sets the scale:</p>
+    <div class="equation">
+      $$\frac{D^2 \xi^\mu}{D\tau^2} = -R^\mu{}_{\nu\alpha\beta}\, u^\nu \xi^\alpha u^\beta$$
+    </div>
+
+    <p>For a radial infall outside a Schwarzschild hole, the leading tidal term scales as $1/r^3$, with an explicit Newtonian form:</p>
+    <div class="equation">
+      $$\Delta a \approx \frac{2GM}{r^3}\,\Delta x$$
+    </div>
+
+    <p>The mass factorises out and the distance appears cubed. That is why a supermassive black hole is a <em>gentle</em> place. At the event horizon of $M_\odot = 4.6 \times 10^{30}$ kg the tidal stretch is survivable across a human body; for $10 M_\odot$ it is not; near a stellar-mass hole, $3 \times 10^{29}$ kg, the tidal force is spread over $r_s \approx 400$ m and shreds you.</p>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 640 260" role="img" aria-labelledby="bh-tidal-title bh-tidal-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="bh-tidal-title">Geodesic deviation showing tidal stretching</title>
+        <desc id="bh-tidal-desc">A small extended body drawn at three distances from a black hole. Far away its width matches its height. As it approaches the horizon the same object becomes progressively elongated along the radial direction and compressed sideways.</desc>
+
+        <circle cx="540" cy="130" r="40" fill="currentColor" opacity="0.12"/>
+        <circle cx="540" cy="130" r="40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="6 5"/>
+        <text x="540" y="200" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">EVENT HORIZON</text>
+
+        <!-- far: round -->
+        <g>
+          <ellipse cx="120" cy="90" rx="22" ry="22" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="120" y="140" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">far: r ≫ rₛ</text>
+          <text x="120" y="158" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" opacity="0.8">round, weak tides</text>
+        </g>
+
+        <!-- middle: elongated -->
+        <g>
+          <ellipse cx="290" cy="90" rx="17" ry="32" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="290" y="150" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">closer: tides</text>
+          <text x="290" y="168" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" opacity="0.8">elongating</text>
+        </g>
+
+        <!-- near: spaghettified -->
+        <g>
+          <ellipse cx="440" cy="90" rx="10" ry="48" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="440" y="170" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">near rₛ: spaghettified</text>
+        </g>
+
+        <line x1="70" y1="225" x2="600" y2="225" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+        <text x="70" y="245" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">Δa ∝ 2GM Δx / r³ — tidal stretching scales as 1/r³, the mass factorises out</text>
+      </svg>
+      <div class="caption">Differential gravity stretches a body along the radial direction. Because the tidal term scales as $1/r^3$, the closer the approach, the more violent — and the larger $M$, the further out this begins.</div>
+    </div>
+
+    <div class="definition">
+      <strong>Spaghettification</strong> — the tidal stretching that shreds an infalling object. The observed "falling into a black hole" footage from <em>Interstellar</em>'s fictional Gargantua was based on scientific papers on tidal disruption, though the effects there were exaggerated.
+    </div>
+
+    <!-- Accretion -->
+    <h2 id="accretion" class="section-title"><span class="num">4.</span> Accretion Disks &amp; Jets</h2>
+    <p>A black hole has no surface, so matter crossing the horizon does not radiate on the way in. Instead, angular momentum slows the infalling gas into a <strong>disk</strong> — friction between neighbouring rings converts kinetic energy into heat. The inner edge of the disk sits at the innermost stable circular orbit, $r_\text{ISCO} = 3r_s$ for a Schwarzschild hole.</p>
+
+    <div class="equation">
+      $$r_\text{ISCO} = \frac{6GM}{c^2} = 3\,r_s$$
+    </div>
+
+    <p>Efficiency is the remarkable part. Radiating at the Eddington limit, a thin disk around a non-rotating black hole converts only about $5.7\%$ of the accreted rest mass into energy; spinning one up near-extremally raises that to roughly $42\%$. For ordinary fusion the figure is $0.7\%$.</p>
+
+    <div class="equation">
+      $$\eta = \frac{L}{\dot{M}c^2} \approx 0.057 \;\to\; 0.42 \quad \text{(spin)}\qquad \text{vs} \quad 0.007 \;\text{for H}\!\to\!\text{He fusion}$$
+    </div>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 700 300" role="img" aria-labelledby="bh-disk-title bh-disk-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="bh-disk-title">Accretion disk and relativistic jets</title>
+        <desc id="bh-disk-desc">Edge-on schematic of a black hole with a tilted accretion disk, polar jets launched along the rotation axis, the event horizon marked, and the ISCO marked at three times the Schwarzschild radius.</desc>
+        <defs>
+          <linearGradient id="disk-g" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="currentColor" stop-opacity="0.15"/>
+            <stop offset="50%" stop-color="currentColor" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="currentColor" stop-opacity="0.15"/>
+          </linearGradient>
+        </defs>
+
+        <!-- jets -->
+        <path d="M 350 60 L 350 10" stroke="currentColor" stroke-width="7" opacity="0.5" stroke-linecap="round"/>
+        <path d="M 350 240 L 350 290" stroke="currentColor" stroke-width="7" opacity="0.5" stroke-linecap="round"/>
+        <path d="M 340 70 L 360 70" stroke="currentColor" stroke-width="2"/>
+        <text x="372" y="34" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">relativistic jet (⟂ disk)</text>
+
+        <!-- disk -->
+        <ellipse cx="350" cy="150" rx="250" ry="52" fill="url(#disk-g)" stroke="currentColor" stroke-width="1.5" opacity="0.9"/>
+        <!-- ISCO -->
+        <ellipse cx="350" cy="150" rx="96" ry="20" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="7 5"/>
+        <text x="452" y="120" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">ISCO = 3rₛ</text>
+        <!-- horizon -->
+        <ellipse cx="350" cy="150" rx="52" ry="52" fill="currentColor" opacity="0.85"/>
+        <text x="350" y="155" text-anchor="middle" font-size="11" font-family="monospace" fill="var(--bg, #fff)">BH</text>
+        <text x="350" y="222" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">event horizon (rₛ)</text>
+        <text x="70" y="272" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">Disk is hottest and brightest at the inner edge; friction, not the hole, does the radiating.</text>
+      </svg>
+      <div class="caption">Edge-on view. The disk extends far beyond the horizon, but its radiating inner edge is at $3r_s$ — that is where the light comes from.</div>
+    </div>
+
+    <div class="tip">
+      <strong>Tidal disruption events</strong> — when a star wanders too close to a stellar-mass black hole, it is torn apart. Half the debris returns on highly eccentric orbits, and the resulting accretion burst is a <em>tidal disruption flare</em>, bright enough to be visible from other galaxies.
+    </div>
+
+    <!-- Hawking -->
+    <h2 id="hawking" class="section-title"><span class="num">5.</span> Hawking Radiation</h2>
+    <p>Quantum mechanics makes black holes glow. The uncertainty principle forbids the vacuum from having sharply defined energy everywhere; near the horizon, a virtual particle–antiparticle pair straddling the membrane can escape while its partner falls in. Energy conservation is satisfied by the hole's mass shrinking.</p>
+
+    <div class="equation">
+      $$T_\text{H} = \frac{\hbar c^3}{8\pi G M k_B}$$
+    </div>
+
+    <p>The inverse mass dependence is the whole story. For the Sun ($T_\text{H} \approx 6 \times 10^{-8}$ K) this is utterly negligible, and the hole would need $10^{10}$ years to evaporate. But for a microscopic primordial black hole of about $10^{11}$ kg, the temperature reaches $10^{11}$ K and it would have evaporated within the age of the universe.</p>
+
+    <div class="equation">
+      $$M(t) \approx M_0\left(1 - \frac{t}{\tau}\right)^{1/3}, \qquad \tau \approx 5120\pi G^2 M_0^3/(\hbar c^4) \approx 8.4\times10^{-17}\left(\frac{M_0}{\mathrm{kg}}\right)^3 \mathrm{s}$$
+    </div>
+
+    <p>Mass scales as the cube of lifetime. This is why primordial black holes, if they exist, are a candidate for dark matter — a population in a narrow mass window would still be cooling, and would be genuinely "warm" rather than starlight.</p>
+
+    <div class="definition">
+      <strong>Unresolved.</strong> Hawking radiation has never been observed. Every laboratory attempt has been swamped by backgrounds many orders of magnitude larger. It remains one of the few predictions of general relativity that general quantum theory has never rendered unstable — the "trans-Planckian problem" is exactly that it assumes validity at energies where nothing justifies it.
+    </div>
+
+    <!-- Lensing -->
+    <h2 id="lensing" class="section-title"><span class="num">6.</span> Gravitational Lensing</h2>
+    <p>Mass curves spacetime, so light does not travel in straight lines. A compact mass acts as a lens. The deflection for a ray passing impact parameter $b$:</p>
+    <div class="equation">
+      $$\alpha = \frac{4GM}{c^2 b} = \frac{2r_s}{b}$$
+    </div>
+
+    <p>The thin-lens approximation relates the observed angular separation $\theta$ to the Einstein radius $\theta_E$, from which lensing becomes a direct mass probe independent of any emission from the lens itself:</p>
+    <div class="equation">
+      $$\beta = \theta - \frac{\theta_E^2}{\theta}, \qquad \theta_E = \sqrt{\frac{4GM}{c^2}\frac{D_{LS}}{D_L D_S}}$$
+    </div>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 660 280" role="img" aria-labelledby="bh-lens-title bh-lens-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="bh-lens-title">Gravitational lensing producing an Einstein ring</title>
+        <desc id="bh-lens-desc">An observer, a distant lens, and a background source. Light from the source takes two paths around the lens, one above and one below, arriving at the same point on the sky and forming an Einstein ring.</desc>
+        <defs>
+          <marker id="arr-l" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- source -->
+        <circle cx="600" cy="60" r="14" fill="currentColor" opacity="0.65"/>
+        <text x="600" y="40" text-anchor="middle" font-size="13" font-family="monospace" fill="currentColor">SOURCE</text>
+
+        <!-- lens -->
+        <circle cx="300" cy="130" r="30" fill="none" stroke="currentColor" stroke-width="3"/>
+        <circle cx="300" cy="130" r="8" fill="currentColor"/>
+        <text x="300" y="180" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">LENS (M)</text>
+
+        <!-- observer -->
+        <circle cx="40" cy="150" r="13" fill="currentColor" opacity="0.85"/>
+        <text x="40" y="185" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">OBSERVER</text>
+
+        <!-- two lensed paths -->
+        <path d="M 300 116 Q 170 40 40 150" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr-l)" opacity="0.85"/>
+        <path d="M 300 144 Q 170 220 40 150" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#arr-l)" opacity="0.85"/>
+        <text x="150" y="248" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">α = 4GM/(c²b)</text>
+      </svg>
+      <div class="caption">Exact alignment of source, lens and observer gives an <strong>Einstein ring</strong> — a perfect circle, because the deflection is the same at every angle around the lens.</div>
+    </div>
+
+    <!-- Evidence -->
+    <h2 id="evidence" class="section-title"><span class="num">7.</span> The Observational Evidence</h2>
+    <p>For decades black holes were theoretical. Three observations settled the question, all of them based on the same principle: <em>you measure the mass by watching what orbits it</em>.</p>
+
+    <div class="definition">
+      <strong>Sagittarius A*</strong> — the radio source at the centre of our Galaxy. Stellar orbits measured by the Keck and VLT telescopes over more than a decade give a mass of about $4.3 \times 10^6\,M_\odot$ concentrated within a region smaller than our Solar System. No other object of that mass fits the data.
+    </div>
+
+    <div class="definition">
+      <strong>M87*</strong> — imaged in 2019 by the Event Horizon Telescope. A ring of emission $5.4 \times 10^{10} M_\odot$ in mass and $2.6 \times 10^{12}$ m across. The shadow's angular size confirms general relativity's prediction to within a few percent.
+    </div>
+
+    <div class="definition">
+      <strong>GW150914</strong> — detected by LIGO in 2015, the first direct observation of gravitational waves: two $\sim 36\,M_\odot$ black holes spiralling together and merging into a $\sim 62\,M_\odot$ remnant, radiating about $3\,M_\odot c^2$ in energy. Since 2015 the catalog has passed 90 candidates.
+    </div>
+
+    <div class="tip">
+      <strong>Why the shadow is the right size</strong> — for a Schwarzschild hole the shadow subtends an angle of $2\sqrt{3}\,r_s/D$. The critical impact parameter for photon capture is $b_c = 3\sqrt{3}\,GM/c^2 = 2.6\,r_s$, which is why lensed images do not vanish smoothly at the shadow edge but jump.
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>A black hole is a region, not an object: everything inside $r_s = 2GM/c^2$ reaches the singularity. Nothing marks the horizon itself.</li>
+        <li>Gravity redshift makes clocks at $r$ run slow by $\sqrt{1 - r_s/r}$ — a coordinate effect that the infaller does not experience.</li>
+        <li>Tidal forces, not density, do the killing, and they scale as $1/r^3$. Bigger black holes are gentler.</li>
+        <li>Accretion is efficient because friction in the disk radiates — up to 42% with spin, versus 0.7% for fusion.</li>
+        <li>Hawking temperature scales as $1/M$, so only microscopic holes would evaporate within the age of the universe.</li>
+        <li>We now have strong evidence: Sgr A*, the M87* image, and dozens of gravitational-wave mergers.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="time-travel.html" class="topic-card" style="display:inline-block; max-width:320px;">⏳ Next: Time Travel &amp; Causality →</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — gravitation module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

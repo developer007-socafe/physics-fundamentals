@@ -33,7 +33,10 @@
           <a href="waves.html">Waves</a>
           <a href="quantum.html">Quantum</a>
           <a href="relativity.html">Relativity</a>
+                    
           <a href="modern-physics.html">Modern Physics</a>
+          <a href="black-holes.html">Black Holes</a>
+          <a href="time-travel.html">Time Travel</a>
           <div class="dropdown-divider" aria-hidden="true"></div>
           <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
         </div>
@@ -255,6 +258,18 @@
     </div>
 
     <p style="text-align:center; margin-top:2rem;"><a href="thermodynamics.html" class="topic-card" style="display:inline-block; max-width:320px;">🔥 Next: Thermodynamics →</a></p>
+  <!-- Live seismology -->
+    <div class="live-head">
+      <h2 class="eyebrow">Live seismology</h2>
+      <p class="live-sub">Real earthquakes recorded in the last 24 hours, magnitude 4.5 and above.</p>
+    </div>
+    <section class="live-card fade-in" aria-labelledby="quake-heading">
+      <h3 id="quake-heading">🌍 Recent significant earthquakes</h3>
+      <p class="live-head-note">Source: <a href="https://earthquake.usgs.gov/earthquakes/feed/" target="_blank" rel="noopener">USGS Earthquake Hazards Program</a> — free, no key required.</p>
+      <p id="quake-status" class="live-status">Contacting the USGS earthquake feed…</p>
+      <div id="quake-count" class="live-count" hidden></div>
+      <ul id="quake-list" class="quake-list"></ul>
+    </section>
   </article>
 
   <footer class="site-footer">
@@ -263,5 +278,6 @@
 
   <script src="js/main.js"></script>
   <script src="js/simulations.js"></script>
+  <script src="js/live-data.js"></script>
 </body>
 </html>

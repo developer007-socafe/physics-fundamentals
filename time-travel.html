@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Travel &amp; Causality — Physics Fundamentals</title>
+  <meta name="description" content="Time dilation, the twin paradox, light cones and causality, Penrose diagrams, closed timelike curves, wormholes and why macroscopic time travel is believed impossible.">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:,">
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Physics<span class="dot">.</span>Fundamentals</a>
+      <nav class="nav" id="mainNav">
+        <button class="menu-btn" aria-label="Open topics menu" aria-expanded="false" aria-controls="topicMenu">TOPICS ▾</button>
+        <div class="nav-dropdown" id="topicMenu" hidden>
+          <a href="index.html">Home</a>
+          <a href="mechanics.html">Mechanics</a>
+          <a href="thermodynamics.html">Thermodynamics</a>
+          <a href="electromagnetism.html">Electromagnetism</a>
+          <a href="waves.html">Waves</a>
+          <a href="quantum.html">Quantum</a>
+          <a href="relativity.html">Relativity</a>
+          <a href="modern-physics.html">Modern Physics</a>
+          <a href="black-holes.html">Black Holes</a>
+          <a href="time-travel.html" class="active">Time Travel</a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <button class="theme-toggle" aria-label="Toggle theme">🌓 THEME</button>
+        </div>
+      </nav>
+      <div class="header-tools">
+        <input type="search" id="searchBox" class="search-box" placeholder="SEARCH…" aria-label="Search topics">
+      </div>
+    </div>
+  </header>
+
+  <article class="article">
+    <div class="article-header">
+      <div class="breadcrumb"><a href="index.html">← Back to the topics</a></div>
+      <h1>Time Travel &amp; Causality</h1>
+      <p class="subtitle">Special relativity permits it. The universe mostly forbids it.</p>
+      <div class="toc">
+        <strong>Contents</strong>
+        <ol>
+          <li><a href="#cones">Light cones &amp; causal structure</a></li>
+          <li><a href="#dilation">Time dilation &amp; proper time</a></li>
+          <li><a href="#twin">The twin paradox</a></li>
+          <li><a href="#penrose">Penrose diagrams</a></li>
+          <li><a href="#ctc">Closed timelike curves</a></li>
+          <li><a href="#wormholes">Wormholes &amp; Tipler cylinders</a></li>
+          <li><a href="#why">Why macroscopic travel is ruled out</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Light cones -->
+    <h2 id="cones" class="section-title"><span class="num">1.</span> Light Cones &amp; Causal Structure</h2>
+    <p>Everything in relativity rests on one distinction: which events can influence which. At any event you can separate the universe into three parts — the past light cone, the future light cone, and everything outside, causally disconnected from it. Inside the future cone are events you can reach by travelling slower than light. Outside it, you never can.</p>
+
+    <div class="equation">
+      $$ds^2 = -c^2\,dt^2 + d\vec{x}^2 \quad\Longrightarrow\quad
+      \begin{cases}
+      ds^2 < 0 & \text{timelike\ \ (can connect)}\\
+      ds^2 = 0 & \text{null\ \ (light)}\\
+      ds^2 > 0 & \text{spacelike\ \ (no signal fits)}
+      \end{cases}$$
+    </div>
+
+    <p>Because the interval between two events is invariant, whether an interval is timelike is a fact, not a perspective. <em>No observer anywhere will ever disagree that event A happened before event B</em> when A is in B's past light cone. That is the foundation of causality, and it is far stronger than it looks.</p>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 660 330" role="img" aria-labelledby="tt-cone-title tt-cone-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="tt-cone-title">Light cone with timelike, null and spacelike worldlines</title>
+        <desc id="tt-cone-desc">A point in spacetime with its future light cone opening upward at 45 degrees. Inside the cone a steep timelike worldline, on the boundary a light ray at 45 degrees, and outside a shallow spacelike worldline that cannot be travelled by any massive object.</desc>
+        <defs>
+          <marker id="arr-c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <!-- axes -->
+        <line x1="60" y1="290" x2="620" y2="290" stroke="currentColor" stroke-width="2"/>
+        <line x1="60" y1="290" x2="60" y2="20" stroke="currentColor" stroke-width="2"/>
+        <text x="630" y="295" font-size="13" font-family="monospace" fill="currentColor">x</text>
+        <text x="48" y="16" font-size="13" font-family="monospace" fill="currentColor">t</text>
+
+        <!-- light cone from event at (240,290) -->
+        <line x1="240" y1="290" x2="240" y2="110" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-c)"/>
+        <line x1="240" y1="290" x2="420" y2="110" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-c)"/>
+        <line x1="240" y1="290" x2="60" y2="110" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-c)"/>
+        <circle cx="240" cy="290" r="7" fill="currentColor"/>
+        <text x="252" y="308" font-size="12" font-family="monospace" fill="currentColor">EVENT</text>
+
+        <!-- timelike: steep, stays inside -->
+        <path d="M 240 290 Q 275 220 262 118" fill="none" stroke="currentColor" stroke-width="3" marker-end="url(#arr-c)"/>
+        <text x="300" y="200" font-size="12" font-family="monospace" fill="currentColor">timelike</text>
+        <text x="300" y="216" font-size="11" font-family="monospace" fill="currentColor" opacity="0.8">(v &lt; c) — you can ride it</text>
+
+        <!-- null label -->
+        <text x="440" y="128" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">null boundary</text>
+
+        <!-- spacelike: shallow, outside -->
+        <path d="M 240 290 Q 400 250 570 196" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#arr-c)"/>
+        <text x="470" y="252" font-size="12" font-family="monospace" fill="currentColor">spacelike</text>
+        <text x="470" y="268" font-size="11" font-family="monospace" fill="currentColor" opacity="0.8">(v &gt; c) — unreachable</text>
+
+        <text x="60" y="320" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">Time travel means tracing a timelike path that arrives before it left.</text>
+      </svg>
+      <div class="caption">Null lines sit at exactly 45° because light covers one unit of space per unit of time. Timelike paths are steeper, spacelike shallower — and only steeper ones are physically realisable.</div>
+    </div>
+
+    <!-- Dilation -->
+    <h2 id="dilation" class="section-title"><span class="num">2.</span> Time Dilation &amp; Proper Time</h2>
+    <p>The proper time $\tau$ along a worldline is the time shown by a clock that travels with the object. For constant velocity it's $\tau = t/\gamma$. For a general path, integral and proper time are different things — that is the resolution of the twin paradox:</p>
+
+    <div class="equation">
+      $$d\tau = \sqrt{dt^2 - \frac{d\vec{x}^2}{c^2}}\,, \qquad \gamma = \frac{1}{\sqrt{1 - v^2/c^2}}$$
+    </div>
+
+    <p>A clock moving with the Earth is a <em>frame</em>, not an event. Comparing an accelerating traveller against a stay-at-home twin requires integrating along each actual path, not applying $\gamma$ to a velocity:</p>
+
+    <div class="equation">
+      $$\Delta\tau = \int \sqrt{1 - \frac{v(t)^2}{c^2}}\;dt$$
+    </div>
+
+    <p>Under uniform motion the integral is identical for both twins. It is the acceleration — that is, the failure of the journey to be a single inertial frame — that breaks the symmetry and lets the age difference be predicted in advance.</p>
+
+    <div class="example">
+      <strong>Example.</strong> A traveller accelerates at $g = 9.81$ m/s² for one year, coasts, decelerates for one year, and repeats. In the stay-at-home frame the total elapsed time is about $2.8$ years, but the traveller experiences about $1.1$ years — and at turnaround they are at most $0.9$ years old again. The traveller has genuinely, physically become younger. This is the classical constant-acceleration case, and the effect is unbounded.
+    </div>
+
+    <div class="tip">
+      <strong>Not a paradox.</strong> The traveller sees their own age increase monotonically; the stay-at-home sees theirs increase more slowly. Neither observer sees the other's clock run backwards. This is the single most misunderstood result in relativity — there is no second step where the traveller goes backwards.
+    </div>
+
+    <!-- Twin paradox diagram -->
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 560 320" role="img" aria-labelledby="tt-twin-title tt-twin-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="tt-twin-title">Twin paradox spacetime diagram</title>
+        <desc id="tt-twin-desc">A stay-at-home twin travels a straight vertical worldline while the traveller's worldline curves away and returns, meeting again. Light signals sent from the stay-at-home twin catch up to the traveller, showing the traveller's view being blue shifted near turnaround.</desc>
+
+        <line x1="70" y1="280" x2="530" y2="280" stroke="currentColor" stroke-width="2"/>
+        <line x1="70" y1="280" x2="70" y2="20" stroke="currentColor" stroke-width="2"/>
+        <text x="540" y="285" font-size="13" font-family="monospace" fill="currentColor">x</text>
+        <text x="58" y="16" font-size="13" font-family="monospace" fill="currentColor">t</text>
+
+        <!-- stay home: straight -->
+        <line x1="140" y1="280" x2="140" y2="45" stroke="currentColor" stroke-width="3"/>
+        <text x="140" y="300" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">stay-at-home (worldline)</text>
+
+        <!-- traveller: out and back, kink at turnaround -->
+        <path d="M 140 280 L 380 150 L 140 45" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="9 5"/>
+        <text x="396" y="152" font-size="12" font-family="monospace" fill="currentColor">traveller (turnaround)</text>
+
+        <!-- reunion -->
+        <circle cx="140" cy="280" r="8" fill="currentColor"/>
+        <circle cx="140" cy="45" r="8" fill="currentColor"/>
+        <text x="112" y="270" font-size="12" font-family="monospace" fill="currentColor">departure</text>
+        <text x="96" y="34" text-anchor="end" font-size="12" font-family="monospace" fill="currentColor">reunion</text>
+
+        <text x="70" y="318" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">The traveller's path is shorter, so ∫dτ is smaller — they are younger at reunion.</text>
+      </svg>
+      <div class="caption">A spacetime diagram. Note the traveller's worldline leaves the light cone's straight-line symmetry by <em>kinking</em> — that kink is the turnaround, and it is the whole resolution.</div>
+    </div>
+
+    <!-- Penrose -->
+    <h2 id="penrose" class="section-title"><span class="num">3.</span> Penrose Diagrams</h2>
+    <p>An infinite spacetime cannot be drawn on paper. Roger Penrose's 1968 trick makes it finite: light rays are null, so under a conformal transformation you can compress every path of light to 45°, which lets infinite distance be drawn as a finite point. Infinity becomes a <em>line</em> in the diagram, and the whole geometry fits on a sheet.</p>
+
+    <div class="equation">
+      $$ds^2 = \Omega^2(\eta)\,\bigl(-d\alpha^2 + d\beta^2\bigr)$$
+    </div>
+
+    <p>$\Omega$ is the conformal factor. The causal structure — which events can signal which — is unchanged, while every path of null geodesic becomes 45°. This is why the diagram is the right tool for studying horizons: a horizon is not a material surface but a boundary of causal reachability, and causality is exactly what conformal compactification preserves.</p>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram svg-penrose" viewBox="0 0 720 640" role="img" aria-labelledby="tt-penrose-title tt-penrose-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="tt-penrose-title">Penrose conformal diagram of a Schwarzschild black hole</title>
+        <desc id="tt-penrose-desc">A Kruskal-Szekeres conformal diagram. Null lines run at 45 degrees. The vertical event horizons divide the diagram into a left exterior region, a right exterior region, and two interior regions containing horizontal dashed spacelike singularities. The timelike infinities i-plus and i-minus and the null infinities scri-plus and scri-minus are marked, and the two exterior regions meet in a white-hole past singularity.</desc>
+        <defs>
+          <marker id="arr-p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+
+        <rect x="0" y="0" width="720" height="640" fill="none"/>
+
+        <!-- ============ frame: 4 regions ============ -->
+        <!-- spacelike singularities: horizontal dashed, top of black hole, bottom of white hole -->
+        <line x1="180" y1="170" x2="540" y2="170" stroke="currentColor" stroke-width="3" stroke-dasharray="12 7"/>
+        <text x="360" y="158" text-anchor="middle" font-size="13" font-family="monospace" fill="currentColor">FUTURE SINGULARITY  r = 0</text>
+        <text x="360" y="192" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" opacity="0.85">spacelike — the future is cut off here</text>
+
+        <line x1="180" y1="470" x2="540" y2="470" stroke="currentColor" stroke-width="3" stroke-dasharray="12 7"/>
+        <text x="360" y="492" text-anchor="middle" font-size="13" font-family="monospace" fill="currentColor">PAST SINGULARITY  r = 0</text>
+        <text x="360" y="508" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" opacity="0.85">spacelike — this is a white hole</text>
+
+        <!-- event horizons: vertical at x=180 and x=540, from past to future singular. -->
+        <line x1="180" y1="170" x2="180" y2="470" stroke="currentColor" stroke-width="3"/>
+        <line x1="540" y1="170" x2="540" y2="470" stroke="currentColor" stroke-width="3"/>
+
+        <!-- i-  : past timelike infinity, mid-left and mid-right -->
+        <text x="60" y="326" text-anchor="middle" font-size="14" font-family="monospace" fill="currentColor">ℐ⁻</text>
+        <text x="660" y="326" text-anchor="middle" font-size="14" font-family="monospace" fill="currentColor">ℐ⁺</text>
+
+        <!-- scri: null infinities, the 45-degree outer edges -->
+        <line x1="180" y1="470" x2="60" y2="350" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-p)" opacity="0.9"/>
+        <line x1="60" y1="302" x2="180" y2="182" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-p)" opacity="0.9"/>
+        <text x="52" y="330" text-anchor="end" font-size="13" font-family="monospace" fill="currentColor">ℐ⁰⁻</text>
+        <text x="52" y="290" text-anchor="end" font-size="13" font-family="monospace" fill="currentColor">ℐ⁰⁺</text>
+
+        <line x1="540" y1="470" x2="660" y2="350" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-p)" opacity="0.9"/>
+        <line x1="660" y1="302" x2="540" y2="182" stroke="currentColor" stroke-width="2.5" marker-end="url(#arr-p)" opacity="0.9"/>
+        <text x="668" y="330" font-size="13" font-family="monospace" fill="currentColor">ℐ⁰⁻</text>
+        <text x="668" y="290" font-size="13" font-family="monospace" fill="currentColor">ℐ⁰⁺</text>
+
+        <!-- future/past null infinity vertical extent label -->
+        <text x="360" y="586" text-anchor="middle" font-size="13" font-family="monospace" fill="currentColor">∞   —   infinite spacetime compressed to finite paper</text>
+        <text x="360" y="612" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.85">light rays compress to 45° lines; horizons are the vertical boundaries</text>
+
+        <!-- Radial null rays, drawn at 45 degrees inside the frame only. These mark
+     the light paths that arrive at / depart from the bifurcation spheres, and
+     must not be extended past the diagram's boundary. -->
+        <line x1="180" y1="470" x2="240" y2="410" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+        <line x1="540" y1="170" x2="600" y2="110" stroke="currentColor" stroke-width="1.4" opacity="0.45"/>
+
+        <!-- region labels -->
+        <text x="120" y="232" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">EXTERIOR</text>
+        <text x="120" y="248" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">(our universe)</text>
+        <text x="600" y="232" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">EXTERIOR</text>
+        <text x="600" y="248" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">region II</text>
+        <text x="360" y="252" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">BLACK HOLE (interior)</text>
+        <text x="360" y="392" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">WHITE HOLE (interior)</text>
+
+        <!-- horizon labels -->
+        <text x="188" y="500" font-size="11" font-family="monospace" fill="currentColor" opacity="0.9">event horizon</text>
+        <text x="532" y="500" text-anchor="end" font-size="11" font-family="monospace" fill="currentColor" opacity="0.9">event horizon</text>
+
+        <!-- markers at top/bottom of the horizons = bifurcation points -->
+        <circle cx="180" cy="170" r="5" fill="currentColor"/>
+        <circle cx="540" cy="170" r="5" fill="currentColor"/>
+        <circle cx="180" cy="470" r="5" fill="currentColor"/>
+        <circle cx="540" cy="470" r="5" fill="currentColor"/>
+      </svg>
+      <div class="caption">Kruskal–Szekeres conformal diagram of a maximally extended Schwarzschild black hole. The vertical lines are event horizons; the horizontal dashed lines are spacelike singularities. Our region (II) can never signal into region I — the white hole — which is causally sealed. This is why you cannot travel to a white hole even though it is "the past of" a black hole.</div>
+    </div>
+
+    <p>The Kruskal extension has four regions, and that structure is the payoff. Our exterior (region II) shares a boundary with an identical exterior (region I) connected through a wormhole. Signals from region I could in principle reach us. But the white hole (region IV) has <em>no past</em> you can enter — its past boundary is spacelike, so nothing inside it, not even light, can be sent backward to become the cause of anything in region III.</p>
+
+    <div class="equation">
+      $$ds^2 = -\left(1 - \frac{r_s}{r}\right)c^2 dt^2 + \frac{dr^2}{1 - r_s/r} + r^2 d\Omega^2$$
+    </div>
+
+    <p>Defining new coordinates $U$ and $V$ that are regular at the horizon, $U = -e^{-u/r_s}$, $V = e^{v/r_s}$, removes the singularity in the metric at $r = r_s$. Coordinates are a choice; the horizon is a coordinate-independent boundary of causal reachability. That distinction — the difference between an apparent singularity and a genuine one — is the reason Penrose diagrams exist at all.</p>
+
+    <!-- CTC -->
+    <h2 id="ctc" class="section-title"><span class="num">4.</span> Closed Timelike Curves</h2>
+    <p>A timelike path that returns to its own starting point is a <strong>closed timelike curve</strong> — a CTC. By the equivalence principle, an observer on one would meet their younger self and, in principle, interact. Nothing in the Lorentzian metric forbids it.</p>
+
+    <div class="equation">
+      $$\oint \mathcal{L}_\text{proper}\;dt < 0 \quad\text{(a CTC exists where the "time" integral is negative)}$$
+    </div>
+
+    <p>The shift function $\xi = -T_\text{out} + T_\text{in}$ in Gödel's solution gives $T_\text{out} < T_\text{in}$, so you can circle and arrive before you left. The catch is the price of admission: Gödel's universe requires an infinite rotating dust cylinder of negative cosmological constant — unphysical on any reasonable account.</p>
+
+    <div class="definition">
+      <strong>Gödel's metric (1949)</strong> — the first rigorous construction of closed timelike curves in a solution of Einstein's equations, with a closed universe and a rotating dust solution. Kurt Gödel himself considered it a warning, not a discovery.
+    </div>
+
+    <!-- Wormholes -->
+    <h2 id="wormholes" class="section-title"><span class="num">5.</span> Wormholes &amp; Tipler Cylinders</h2>
+    <p>The cleanest time-machine candidate is a traversable wormhole: a throat connecting two distant regions, shortening a route without creating a shortcut to the past. Morris and Thorne (1988) showed that to keep such a throat open against vacuum tension you need an unphysically negative stress-energy density — but it does not violate any known energy condition, only the weak one.</p>
+
+    <div class="equation">
+      $$g_{tt} = \left(1 - \frac{r_0^2}{r^2}\right), \qquad \text{throat at } r = r_0$$
+    </div>
+
+    <p>To turn it into a machine, Morris and Thorne added a pair of disks moving fast along the throat. Tipler's 1974 analysis showed the whole arrangement is unstable: any perturbation at the throat propagates with a divergence, and no finite energy keeps it open. Magnetic fields destabilise it; so does self-gravity. The price is exactly what is hardest to pay.</p>
+
+    <div class="tip">
+      <strong>Cosmological protection.</strong> The "chronometry protection conjecture" (Hawking) proposes that any attempt to form a CTC is actively prevented — that the laws of physics, quantum effects included, conspire to break the chronology condition the moment it is threatened. It has never been proven, and quantum gravity is not complete enough to test it.
+    </div>
+
+    <div class="diagram-scroll">
+      <svg class="svg-diagram" viewBox="0 0 640 240" role="img" aria-labelledby="tt-worm-title tt-worm-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="tt-worm-title">Morris-Thorne traversable wormhole throat</title>
+        <desc id="tt-worm-desc">A side-on embedding of a wormhole showing a flat exterior on the left, a throat pinching in the middle, and a second flat exterior on the right, with the time-shifting disks shown in cyan.</desc>
+        <path d="M 40 200 L 180 200 C 240 200 280 130 320 130 C 360 130 400 200 460 200 L 600 200" fill="none" stroke="currentColor" stroke-width="3"/>
+        <text x="90" y="228" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">exterior A</text>
+        <text x="320" y="112" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">throat</text>
+        <text x="550" y="228" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor">exterior B</text>
+        <circle cx="320" cy="130" r="4" fill="currentColor"/>
+        <text x="320" y="82" text-anchor="middle" font-size="12" font-family="monospace" fill="currentColor" opacity="0.9">time-shift disk</text>
+        <text x="320" y="66" text-anchor="middle" font-size="11" font-family="monospace" fill="currentColor" opacity="0.85">Morris–Thorne: exotic matter holds it open</text>
+      </svg>
+      <div class="caption">A traversable wormhole is short, not long — it reaches region B without cutting through the intervening spacetime.</div>
+    </div>
+
+    <!-- Why -->
+    <h2 id="why" class="section-title"><span class="num">6.</span> Why Macroscopic Travel Is Believed Impossible</h2>
+    <p>Given that the metric permits it, why is the standard answer so confident that time machines are impossible? Three independent lines of reasoning.</p>
+
+    <div class="definition">
+      <strong>1. Energy conditions.</strong> Every proposed construction needs exotic matter violating the weak or dominant energy condition — negative energy density or tension. This is not a technicality; it would imply repulsive gravitational effects (Morris–Thorne) and a driving force of roughly $10^{42}$ kg for a year of acceleration, vastly exceeding the observable universe's mass-energy. Thorne's "time machine security report" argues no civilization could ever build one.
+    </div>
+
+    <div class="definition">
+      <strong>2. Horizon is already a computational bottleneck.</strong> Bardeen's 1973 result: because a black hole horizon equation is stationary, a comparable event-horizon equation would also be stationary in time, and stationary equations like it are strongly resistant to solution. Long-standing singularity theorems suggest a horizon-producing device would not stay stationary.
+    </div>
+
+    <div class="definition">
+      <strong>3. Instability.</strong> As Tipler showed, any wormhole-based time machine is violently unstable to perturbations; no amount of exact geometry keeps it open. Quantum field theory in curved space independently predicts the "minus-infinity catastrophe" near horizons, where outgoing radiation is infinitely blueshifted.
+    </div>
+
+    <div class="tip">
+      <strong>Consensus.</strong> Working relativistic star club: time travel is forbidden for reasonable physics with high confidence, allowed by the bare equations, and unresolved in quantum gravity. "Impossible" is really "no mechanism survives scrutiny." Any working machine would have to be different from every proposal so far.
+    </div>
+
+    <div style="margin-top:3rem;">
+      <h3>Key Takeaways</h3>
+      <ul style="padding-left:1.4rem;">
+        <li>Light cones partition events into timelike, null and spacelike — an invariant fact no observer disputes.</li>
+        <li>Proper time $\tau = \int\sqrt{dt^2 - d\vec{x}^2/c^2}$ is the path integral that makes the twin paradox a non-paradox.</li>
+        <li>Time travel to the past means a closed timelike curve — Lorentzian geometry allows one, physics rejects every known construction.</li>
+        <li>Penrose diagrams compress infinite spacetime by mapping light rays to 45°, turning horizons and singularities into clear geometry.</li>
+        <li>Wormholes and Gödel's universe show that the equations permit CTCs; energy conditions, stability and horizon-as-thermostat block every specific model.</li>
+        <li>The honest answer: not proven impossible, but nothing we can build survives analysis.</li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem;"><a href="index.html" class="topic-card" style="display:inline-block; max-width:320px;">🏠 Back to all topics</a></p>
+  </article>
+
+  <footer class="site-footer">
+    <p>Physics Fundamentals — causality module. <a href="index.html">Back to topics</a>.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

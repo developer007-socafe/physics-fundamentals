@@ -1215,6 +1215,205 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .equation { font-size: 0.9rem; }
 }
 
+/* ============================================================
+   ADDITIONS — inline SVG diagram utilities + live-API widgets
+   Appended only. No existing selector above is renamed, removed
+   or restructured, so the 9 original pages render exactly as
+   before.
+   ============================================================ */
+
+/* Components that toggle visibility in JS must always win. */
+[hidden] { display: none !important; }
+
+/* ---------- Diagrams: responsive hand-authored inline SVG ---------
+   Rule of use:  <div class="figure center">
+                   <div class="diagram-scroll">
+                     <svg class="svg-diagram" viewBox="...">...</svg>
+                   </div>
+                   <div class="caption">...</div>
+                 </div>
+   width:100% + height:auto keeps the aspect ratio; the min-width on
+   .diagram-scroll > svg means a wide diagram shrinks to its floor and
+   then scrolls inside its own box instead of pushing the page sideways. */
+
+.svg-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  color: var(--diagram-ink);
+}
+.diagram-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.diagram-scroll > .svg-diagram { min-width: 470px; }
+
+/* Strokes and fills, mapped onto the existing diagram tokens. */
+.svg-diagram .ln        { fill: none; stroke: var(--diagram-line); stroke-width: 1.5; stroke-linecap: round; }
+.svg-diagram .ln-soft   { fill: none; stroke: var(--diagram-line); stroke-width: 1; opacity: 0.5; }
+.svg-diagram .ln-acc    { fill: none; stroke: var(--diagram-accent); stroke-width: 2; stroke-linecap: round; }
+.svg-diagram .ln-red    { fill: none; stroke: var(--diagram-red); stroke-width: 2; stroke-linecap: round; }
+.svg-diagram .ln-blue   { fill: none; stroke: var(--diagram-blue); stroke-width: 2; stroke-linecap: round; }
+.svg-diagram .ln-thick  { fill: none; stroke: var(--diagram-ink); stroke-width: 2.4; stroke-linecap: round; }
+.svg-diagram .dash      { stroke-dasharray: 5 4; }
+.svg-diagram .dash-fine { stroke-dasharray: 2 4; opacity: 0.6; }
+.svg-diagram .dot       { fill: var(--diagram-accent); }
+.svg-diagram .dot-red   { fill: var(--diagram-red); }
+.svg-diagram .fill-acc  { fill: var(--diagram-accent); }
+.svg-diagram .fill-ink  { fill: var(--diagram-ink); }
+.svg-diagram .fill-dim  { fill: var(--diagram-line); }
+.svg-diagram .wash      { fill: var(--accent-wash); stroke: var(--border); }
+.svg-diagram .wash-2    { fill: var(--diagram-panel); stroke: var(--diagram-line); }
+.svg-diagram .box       { fill: none; stroke: var(--border-bright); }
+
+/* Labels: .figure svg text already inherits the mono stack. */
+.svg-diagram text { font-size: 12px; fill: var(--diagram-ink); }
+.svg-diagram .t-xs  { font-size: 9px; }
+.svg-diagram .t-sm  { font-size: 10px; }
+.svg-diagram .t-md  { font-size: 13px; }
+.svg-diagram .t-lg  { font-size: 16px; }
+.svg-diagram .t-dim { fill: var(--diagram-line); }
+.svg-diagram .t-acc { fill: var(--diagram-accent); }
+.svg-diagram .t-red { fill: var(--diagram-red); }
+.svg-diagram .t-bold{ font-weight: 700; }
+.svg-diagram .t-mid { text-anchor: middle; }
+.svg-diagram .t-end { text-anchor: end; }
+
+/* ---------- Live API widgets (js/live-data.js) --------------------- */
+
+.live-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  border-bottom: 1px dashed var(--border);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+.live-head h3 { margin: 0; }
+.live-badge {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 0.1rem 0.4rem;
+  white-space: nowrap;
+}
+.live-status {
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: var(--accent-2);
+  background: var(--bg-recess);
+  border: var(--line);
+  border-left: 3px solid var(--accent-2);
+  padding: 0.5rem 0.7rem;
+  margin: 0 0 0.85rem;
+}
+.live-status.is-error {
+  color: var(--c-note);
+  border-left-color: var(--c-note);
+}
+.live-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin: 0.4rem 0 0.35rem;
+}
+.live-body { font-size: 0.86rem; line-height: 1.7; color: var(--text); }
+.live-body:empty, .live-title:empty { display: none; }
+.live-meta { font-size: 0.72rem; letter-spacing: 0.06em; color: var(--text-dim); margin: 0.5rem 0 0; }
+.live-meta a { color: var(--accent); border-bottom: 1px solid var(--accent); }
+.apod-media {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  border: var(--line);
+  background: var(--bg-recess);
+  margin: 0 auto;
+}
+.live-list { list-style: none; padding-left: 0; margin: 0; }
+.live-list > li {
+  padding: 0.5rem 0 0.5rem 1.15rem;
+  border-bottom: var(--line);
+  margin: 0;
+}
+.live-list > li:last-child { border-bottom: none; }
+.live-list .qmag {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.live-list .qplace { color: var(--text); }
+.live-list .qtime { display: block; font-size: 0.7rem; color: var(--text-dim); }
+.live-list a { color: var(--accent); }
+.live-list a:hover { color: var(--accent-2); }
+
+/* ISS readout rows: label / value on a 2-column grid. */
+.live-row {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+}
+.live-row dt { color: var(--accent-2); letter-spacing: 0.1em; }
+.live-row dd { margin: 0; color: var(--text); }
+
+@media (max-width: 400px) {
+  .diagram-scroll > .svg-diagram { min-width: 390px; }
+  .live-head h3 { font-size: 0.92rem; }
+  .live-row { grid-template-columns: 4.2rem minmax(0, 1fr); font-size: 0.72rem; }
+  .apod-media { max-height: 240px; }
+}
+
+/* ---------- Inline SVG diagrams ------------------------------------- */
+/* Diagrams are hand-authored SVG using currentColor, so they inherit the
+   theme automatically and need no image assets. Wide diagrams scroll inside
+   their own container rather than forcing the page sideways. */
+
+.diagram-scroll {
+  margin: 1.6rem 0;
+  border: 1px solid var(--border, rgba(255,179,0,0.28));
+  border-radius: 6px;
+  padding: 1rem 0.6rem;
+  background: var(--surface-2, rgba(255,255,255,0.03));
+  color: var(--accent, #ffb300);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.diagram-scroll > .svg-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-width: 460px;   /* below this the labels become illegible; scroll instead */
+}
+
+.diagram-scroll > .svg-diagram.svg-penrose {
+  min-width: 540px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.diagram-scroll .caption {
+  margin: 0.9rem 0.6rem 0.2rem;
+  color: var(--text, inherit);
+}
+
+/* Narrow phones: keep the diagram readable, let it scroll in place. */
+@media (max-width: 400px) {
+  .diagram-scroll { padding: 0.8rem 0.4rem; }
+  .diagram-scroll > .svg-diagram { min-width: 420px; }
+}
+
 /* ---------- Accessibility ----------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

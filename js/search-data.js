@@ -49,5 +49,17 @@ window.PHYSICS_SEARCH_INDEX = [
     url: "modern-physics.html",
     description: "Atomic models, Bohr model, nuclear physics, radioactivity, Standard Model, Higgs, and cosmology.",
     terms: "modern physics atomic model bohr model nuclear physics radioactivity standard model higgs boson particle physics quarks leptons nuclear fusion fission mass energy equivalence E=mc2 dark matter dark energy"
+  },
+  {
+    title: "Black Holes & Gravitation — Physics Fundamentals",
+    url: "black-holes.html",
+    description: "Event horizons, Schwarzschild radius, gravitational redshift, tidal forces, accretion disks, Hawking radiation, lensing, and the observational evidence.",
+    terms: "black hole event horizon schwarzschild radius gravitational redshift tidal forces spaghettification accretion disk isco eddington hawking radiation hawking temperature lensing einstein ring singularity gravastar M87 Sagittarius Sgr A gravitational waves LIGO"
+  },
+  {
+    title: "Time Travel & Causality — Physics Fundamentals",
+    url: "time-travel.html",
+    description: "Light cones, time dilation, the twin paradox, Penrose diagrams, closed timelike curves, wormholes, and why macroscopic time travel is forbidden.",
+    terms: "time travel causality light cone timelike spacelike null worldline twin paradox proper time penrose diagram conformal diagram kruskal szekeres iplus iminus scri closed timelike curve CTC wormhole morris thorne tipler cylinder godel chronometry protection causality violation"
   }
 ];
